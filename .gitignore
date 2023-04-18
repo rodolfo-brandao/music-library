@@ -39,6 +39,16 @@ bld/
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 
+# JetBrains Rider auto generated files
+*.idea
+global.json
+
+# macOS files
+*.DS_Store
+
+# SQLite files
+*.db
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
