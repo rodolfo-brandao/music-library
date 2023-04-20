@@ -10,8 +10,12 @@ public class Production : TrackableEntity
     public ProductionType ProductionType { get; protected set; }
     public DateOnly ReleaseDate { get; protected set; }
 
+    #region Navigaton properties
+
     public Artist Artist { get; protected set; }
     public ICollection<Music> Musics { get; protected set; } = new List<Music>();
+
+    #endregion
 
     public Production(Guid artistId, string title, ProductionType productionType, DateOnly releaseDate)
     {

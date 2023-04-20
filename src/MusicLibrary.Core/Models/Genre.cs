@@ -6,7 +6,11 @@ public class Genre : TrackableEntity
 {
     public string Name { get; protected set; }
 
+    #region Navigation properties
+
     public ICollection<Artist> Artists { get; protected set; } = new List<Artist>();
+
+    #endregion
 
     public Genre(string name)
     {

@@ -8,7 +8,11 @@ public class Music : TrackableEntity
     public string Title { get; protected set; }
     public ushort DurationInMinutes { get; protected set; }
 
+    #region Navigation properties
+
     public Production Production { get; protected set; }
+
+    #endregion
 
     public Music(Guid productionId, string title, ushort durationInMinutes)
     {
