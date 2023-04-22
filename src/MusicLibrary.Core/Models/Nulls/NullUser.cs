@@ -1,18 +1,47 @@
+using MusicLibrary.Core.Models.Abstract;
+
 namespace MusicLibrary.Core.Models.Nulls;
 
-public class NullUser : User
+public class NullUser : User, INullObject
 {
-    public NullUser(string username, string email, string password, string passwordSalt, string role) : base(username,
-        email, password, passwordSalt, role)
+    public override string Username => string.Empty;
+    public override string Email => string.Empty;
+    public override string Password => string.Empty;
+    public override string PasswordSalt => string.Empty;
+    public override string Role => string.Empty;
+
+    public override User ChangeUsername(string username)
     {
-        Id = default;
-        Username = default;
-        Email = default;
-        Password = default;
-        PasswordSalt = default;
-        Role = default;
-        CreatedAt = default;
-        UpdatedAt = default;
-        IsDisabled = default;
+        return this;
+    }
+
+    public override User ChangeEmail(string email)
+    {
+        return this;
+    }
+
+    public override User ChangePassword(string password, string passwordSalt)
+    {
+        return this;
+    }
+
+    public override User ChangeRole(string role)
+    {
+        return this;
+    }
+
+    public override TrackableEntity Disable()
+    {
+        return this;
+    }
+
+    public override TrackableEntity Enable()
+    {
+        return this;
+    }
+
+    public override TrackableEntity UpdateNow()
+    {
+        return this;
     }
 }

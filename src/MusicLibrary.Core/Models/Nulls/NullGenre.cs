@@ -1,14 +1,28 @@
+using MusicLibrary.Core.Models.Abstract;
+
 namespace MusicLibrary.Core.Models.Nulls;
 
-public class NullGenre : Genre
+public class NullGenre : Genre, INullObject
 {
-    public NullGenre(string name) : base(name)
+    public override string Name => string.Empty;
+
+    public override Genre ChangeName(string name)
     {
-        Id = default;
-        Name = default;
-        Artists = default;
-        CreatedAt = default;
-        UpdatedAt = default;
-        IsDisabled = default;
+        return this;
+    }
+    
+    public override TrackableEntity Disable()
+    {
+        return this;
+    }
+
+    public override TrackableEntity Enable()
+    {
+        return this;
+    }
+
+    public override TrackableEntity UpdateNow()
+    {
+        return this;
     }
 }

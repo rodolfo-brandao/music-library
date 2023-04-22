@@ -1,21 +1,42 @@
 using MusicLibrary.Core.Enums;
+using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
-public class NullProduction : Production
+public class NullProduction : Production, INullObject
 {
-    public NullProduction(Guid artistId, string title, ProductionType productionType, DateOnly releaseDate) : base(
-        artistId, title, productionType, releaseDate)
+    public override Guid ArtistId => Guid.Empty;
+    public override string Title => string.Empty;
+    public override ProductionType ProductionType => default;
+    public override ushort ReleaseYear => ushort.MinValue;
+
+    public override Production ChangeTitle(string title)
     {
-        Id = default;
-        ArtistId = default;
-        Title = default;
-        ProductionType = default;
-        ReleaseDate = default;
-        Artist = default;
-        Musics = default;
-        CreatedAt = default;
-        UpdatedAt = default;
-        IsDisabled = default;
+        return this;
+    }
+
+    public override Production ChangeProductionType(ProductionType productionType)
+    {
+        return this;
+    }
+
+    public override Production ChangeReleaseYear(ushort releaseYear)
+    {
+        return this;
+    }
+
+    public override TrackableEntity Disable()
+    {
+        return this;
+    }
+
+    public override TrackableEntity Enable()
+    {
+        return this;
+    }
+
+    public override TrackableEntity UpdateNow()
+    {
+        return this;
     }
 }
