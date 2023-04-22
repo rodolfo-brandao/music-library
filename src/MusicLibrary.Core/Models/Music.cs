@@ -4,9 +4,10 @@ namespace MusicLibrary.Core.Models;
 
 public class Music : TrackableEntity
 {
-    public Guid ProductionId { get; protected set; }
-    public string Title { get; protected set; }
-    public ushort DurationInMinutes { get; protected set; }
+    public virtual Guid ProductionId { get; protected set; }
+    public virtual byte OrdinalPosition { get; set; }
+    public virtual string Title { get; protected set; }
+    public virtual float DurationInMinutes { get; protected set; }
 
     #region Navigation properties
 
@@ -14,30 +15,25 @@ public class Music : TrackableEntity
 
     #endregion
 
-    public Music(Guid productionId, string title, ushort durationInMinutes)
-    {
-        Id = new Guid();
-        ProductionId = productionId;
-        Title = title;
-        DurationInMinutes = durationInMinutes;
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = default;
-        IsDisabled = default;
-    }
-
-    public Music ChangeProduction(Guid productionId)
+    public virtual Music ChangeProduction(Guid productionId)
     {
         ProductionId = productionId;
         return this;
     }
 
-    public Music ChangeTitle(string title)
+    public virtual Music ChangeOrdinalPosition(byte ordinalPosition)
+    {
+        OrdinalPosition = ordinalPosition;
+        return this;
+    }
+
+    public virtual Music ChangeTitle(string title)
     {
         Title = title;
         return this;
     }
 
-    public Music ChangeDuration(ushort durationInMinutes)
+    public virtual Music ChangeDuration(float durationInMinutes)
     {
         DurationInMinutes = durationInMinutes;
         return this;

@@ -4,8 +4,8 @@ namespace MusicLibrary.Core.Models;
 
 public class Artist : TrackableEntity
 {
-    public Guid GenreId { get; protected set; }
-    public string Name { get; protected set; }
+    public virtual Guid GenreId { get; protected set; }
+    public virtual string Name { get; protected set; }
 
     #region Navigation properties
 
@@ -14,23 +14,13 @@ public class Artist : TrackableEntity
 
     #endregion
 
-    public Artist(Guid genreId, string name)
-    {
-        Id = Guid.NewGuid();
-        GenreId = genreId;
-        Name = name;
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = default;
-        IsDisabled = default;
-    }
-
-    public Artist ChangeGenre(Guid genreId)
+    public virtual Artist ChangeGenre(Guid genreId)
     {
         GenreId = genreId;
         return this;
     }
 
-    public Artist ChangeName(string name)
+    public virtual Artist ChangeName(string name)
     {
         Name = name;
         return this;

@@ -4,7 +4,7 @@ namespace MusicLibrary.Core.Models;
 
 public class Genre : TrackableEntity
 {
-    public string Name { get; protected set; }
+    public virtual string Name { get; protected set; }
 
     #region Navigation properties
 
@@ -12,16 +12,7 @@ public class Genre : TrackableEntity
 
     #endregion
 
-    public Genre(string name)
-    {
-        Id = new Guid();
-        Name = name;
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = default;
-        IsDisabled = default;
-    }
-
-    public Genre ChangeName(string name)
+    public virtual Genre ChangeName(string name)
     {
         Name = name;
         return this;

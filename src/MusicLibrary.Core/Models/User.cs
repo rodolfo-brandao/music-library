@@ -4,44 +4,31 @@ namespace MusicLibrary.Core.Models;
 
 public class User : TrackableEntity
 {
-    public string Username { get; protected set; }
-    public string Email { get; protected set; }
-    public string Password { get; protected set; }
-    public string PasswordSalt { get; protected set; }
-    public string Role { get; protected set; }
+    public virtual string Username { get; protected set; }
+    public virtual string Email { get; protected set; }
+    public virtual string Password { get; protected set; }
+    public virtual string PasswordSalt { get; protected set; }
+    public virtual string Role { get; protected set; }
 
-    public User(string username, string email, string password, string passwordSalt, string role)
-    {
-        Id = Guid.NewGuid();
-        Username = username;
-        Email = email;
-        Password = password;
-        PasswordSalt = passwordSalt;
-        Role = role;
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = default;
-        IsDisabled = default;
-    }
-
-    public User ChangeUsername(string username)
+    public virtual User ChangeUsername(string username)
     {
         Username = username;
         return this;
     }
 
-    public User ChangeEmail(string email)
+    public virtual User ChangeEmail(string email)
     {
         Email = email;
         return this;
     }
 
-    public User ChangePassword(string password, string passwordSalt)
+    public virtual User ChangePassword(string password, string passwordSalt)
     {
         (Password, PasswordSalt) = (password, passwordSalt);
         return this;
     }
 
-    public User ChangeRole(string role)
+    public virtual User ChangeRole(string role)
     {
         Role = role;
         return this;

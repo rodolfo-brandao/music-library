@@ -5,10 +5,10 @@ namespace MusicLibrary.Core.Models;
 
 public class Production : TrackableEntity
 {
-    public Guid ArtistId { get; protected set; }
-    public string Title { get; protected set; }
-    public ProductionType ProductionType { get; protected set; }
-    public DateOnly ReleaseDate { get; protected set; }
+    public virtual Guid ArtistId { get; protected set; }
+    public virtual string Title { get; protected set; }
+    public virtual ProductionType ProductionType { get; protected set; }
+    public virtual ushort ReleaseYear { get; protected set; }
 
     #region Navigaton properties
 
@@ -17,32 +17,21 @@ public class Production : TrackableEntity
 
     #endregion
 
-    public Production(Guid artistId, string title, ProductionType productionType, DateOnly releaseDate)
-    {
-        Id = Guid.NewGuid();
-        Title = title;
-        ProductionType = productionType;
-        ReleaseDate = releaseDate;
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = default;
-        IsDisabled = default;
-    }
-
-    public Production ChangeTitle(string title)
+    public virtual Production ChangeTitle(string title)
     {
         Title = title;
         return this;
     }
 
-    public Production ChangeProductionType(ProductionType productionType)
+    public virtual Production ChangeProductionType(ProductionType productionType)
     {
         ProductionType = productionType;
         return this;
     }
 
-    public Production ChangeReleaseDate(DateOnly releaseDate)
+    public virtual Production ChangeReleaseYear(ushort releaseYear)
     {
-        ReleaseDate = releaseDate;
+        ReleaseYear = releaseYear;
         return this;
     }
 
