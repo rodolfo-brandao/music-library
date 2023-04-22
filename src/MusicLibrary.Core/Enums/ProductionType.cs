@@ -1,6 +1,6 @@
 namespace MusicLibrary.Core.Enums;
 
-public enum ProductionType
+public enum ProductionType : byte
 {
     Album = 1,
     Ep,
