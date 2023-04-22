@@ -12,6 +12,11 @@ public class GenreMapping : IEntityTypeConfiguration<Genre>
 
         builder.HasKey(genre => genre.Id);
 
+        builder.Property(genre => genre.Id)
+            .HasColumnType("UNIQUEIDENTIFIER")
+            .HasColumnName("id")
+            .IsRequired();
+
         builder.Property(genre => genre.Name)
             .HasColumnType("VARCHAR(50)")
             .HasColumnName("name")

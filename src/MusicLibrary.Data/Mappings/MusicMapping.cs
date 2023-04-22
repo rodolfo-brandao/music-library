@@ -22,6 +22,11 @@ public class MusicMapping : IEntityTypeConfiguration<Music>
             .HasColumnName("production_id")
             .IsRequired();
 
+        builder.Property(music => music.OrdinalPosition)
+            .HasColumnType("TINYINT")
+            .HasColumnName("ordinal_position")
+            .IsRequired();
+
         builder.Property(music => music.Title)
             .HasColumnType("VARCHAR(50)")
             .HasColumnName("title")

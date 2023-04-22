@@ -32,9 +32,9 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
             .HasColumnName("production_type")
             .IsRequired();
 
-        builder.Property(production => production.ReleaseDate)
-            .HasColumnType("DATE")
-            .HasColumnName("release_date")
+        builder.Property(production => production.ReleaseYear)
+            .HasColumnType("TINYINT")
+            .HasColumnName("release_year")
             .IsRequired();
 
         builder.Property(production => production.CreatedAt)
