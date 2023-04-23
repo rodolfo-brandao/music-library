@@ -1,0 +1,16 @@
+[
+    {
+        "id": "A6513541-E32D-4E9B-A657-8BE9CEE6AEB5",
+        "name": "Eletronic",
+        "createdAt": "01-01-2023 1:01:01",
+        "updatedAt": null,
+        "isDisabled": false
+    },
+    {
+        "id": "65F97FDF-C941-42B7-84B6-D72CAD67E150",
+        "name": "Thrash Metal",
+        "createdAt": "01-01-2023 1:01:01",
+        "updatedAt": null,
+        "isDisabled": false
+    }
+]

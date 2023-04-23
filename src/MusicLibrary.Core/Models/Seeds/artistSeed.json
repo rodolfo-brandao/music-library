@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1895EDF2-3432-4C67-928A-7EAB36770E78",
+        "genreId": "A6513541-E32D-4E9B-A657-8BE9CEE6AEB5",
+        "name": "Daft Punk",
+        "createdAt": "01-01-2023 1:01:01",
+        "updatedAt": null,
+        "isDisabled": false
+    },{
+        "id": "90C847A3-9D97-46EB-A8A1-50985C262DC7",
+        "genreId": "65F97FDF-C941-42B7-84B6-D72CAD67E150",
+        "name": "Metallica",
+        "createdAt": "01-01-2023 1:01:01",
+        "updatedAt": null,
+        "isDisabled": false
+    }
+]
