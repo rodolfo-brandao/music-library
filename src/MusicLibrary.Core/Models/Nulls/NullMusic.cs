@@ -2,7 +2,7 @@ using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
-public class NullMusic : Music, INullObject
+public sealed class NullMusic : Music, INullObject
 {
     public override Guid ProductionId => Guid.Empty;
     public override byte OrdinalPosition => default;

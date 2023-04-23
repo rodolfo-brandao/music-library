@@ -3,7 +3,7 @@ using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
-public class NullProduction : Production, INullObject
+public sealed class NullProduction : Production, INullObject
 {
     public override Guid ArtistId => Guid.Empty;
     public override string Title => string.Empty;

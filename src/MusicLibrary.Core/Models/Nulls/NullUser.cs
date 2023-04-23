@@ -2,7 +2,7 @@ using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
-public class NullUser : User, INullObject
+public sealed class NullUser : User, INullObject
 {
     public override string Username => string.Empty;
     public override string Email => string.Empty;
