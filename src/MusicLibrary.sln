@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Core", "MusicL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Data", "MusicLibrary.Data\MusicLibrary.Data.csproj", "{4DFA6827-88E8-488F-9F3B-1347EF8E9F71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Presentation", "MusicLibrary.Presentation\MusicLibrary.Presentation.csproj", "{CD17E38E-04E8-46E3-841E-84A4084F9E91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{4DFA6827-88E8-488F-9F3B-1347EF8E9F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFA6827-88E8-488F-9F3B-1347EF8E9F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFA6827-88E8-488F-9F3B-1347EF8E9F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD17E38E-04E8-46E3-841E-84A4084F9E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD17E38E-04E8-46E3-841E-84A4084F9E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD17E38E-04E8-46E3-841E-84A4084F9E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD17E38E-04E8-46E3-841E-84A4084F9E91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
