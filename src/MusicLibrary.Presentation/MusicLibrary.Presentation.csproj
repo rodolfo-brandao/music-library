@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MusicLibrary.Application\MusicLibrary.Application.csproj" />
     <ProjectReference Include="..\MusicLibrary.Data\MusicLibrary.Data.csproj" />
   </ItemGroup>
 
