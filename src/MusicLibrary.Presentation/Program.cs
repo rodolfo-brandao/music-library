@@ -1,3 +1,4 @@
+using MusicLibrary.Application.Extensions;
 using MusicLibrary.Data.Extensions;
 using MusicLibrary.Presentation.Extensions;
 using MusicLibrary.Presentation.Middlewares;
@@ -8,13 +9,17 @@ var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
 builder.Services.ConfigureApiVersioning();
+builder.Services.ConfigureAutoMapper();
+builder.Services.ConfigureMediatR();
+builder.Services.ResolveServices();
 builder.Services.AddAuthorizationPolicy(configuration);
 builder.Services.ConfigureDbContext(configuration);
 builder.Services.ConfigureRouting();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureSwagger(configuration);
+builder.Services.AddFactories();
 builder.Services.AddRepositories();
-builder.Services.AddUnitsOfWork();
+builder.Services.AddUnities();
 builder.Services.ConfigureMvc();
 builder.Services.ConfigureSerilog(builder.Host);
 

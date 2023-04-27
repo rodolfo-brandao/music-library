@@ -1,7 +1,7 @@
-using MusicLibrary.Core.Contracts.UnitsOfWork;
+using MusicLibrary.Core.Contracts.Unities;
 using MusicLibrary.Data.Context;
 
-namespace MusicLibrary.Data.UnitsOfWork;
+namespace MusicLibrary.Data.Unities;
 
 public sealed class UnitOfWork : IUnitOfWork
 {

@@ -1,7 +1,7 @@
 using MusicLibrary.Core.Enums;
 using MusicLibrary.Core.Models;
 
-namespace MusicLibrary.Core.Contracts.Factories;
+namespace MusicLibrary.Core.Factories;
 
 public interface IModelFactory
 {

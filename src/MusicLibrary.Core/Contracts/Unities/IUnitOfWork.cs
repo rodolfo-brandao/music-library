@@ -1,4 +1,4 @@
-namespace MusicLibrary.Core.Contracts.UnitsOfWork;
+namespace MusicLibrary.Core.Contracts.Unities;
 
 public interface IUnitOfWork
 {
