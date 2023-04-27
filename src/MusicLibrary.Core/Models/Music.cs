@@ -4,10 +4,10 @@ namespace MusicLibrary.Core.Models;
 
 public class Music : TrackableEntity
 {
-    public virtual Guid ProductionId { get; protected set; }
-    public virtual byte OrdinalPosition { get; set; }
-    public virtual string Title { get; protected set; }
-    public virtual float DurationInMinutes { get; protected set; }
+    public virtual Guid ProductionId { get; protected internal set; }
+    public virtual byte OrdinalPosition { get; protected internal set; }
+    public virtual string Title { get; protected internal set; }
+    public virtual float DurationInMinutes { get; protected internal set; }
 
     #region Navigation properties
 

@@ -5,10 +5,10 @@ namespace MusicLibrary.Core.Models;
 
 public class Production : TrackableEntity
 {
-    public virtual Guid ArtistId { get; protected set; }
-    public virtual string Title { get; protected set; }
-    public virtual ProductionType ProductionType { get; protected set; }
-    public virtual ushort ReleaseYear { get; protected set; }
+    public virtual Guid ArtistId { get; protected internal set; }
+    public virtual string Title { get; protected internal set; }
+    public virtual ProductionType ProductionType { get; protected internal set; }
+    public virtual ushort ReleaseYear { get; protected internal set; }
 
     #region Navigaton properties
 

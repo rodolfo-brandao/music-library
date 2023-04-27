@@ -4,8 +4,8 @@ namespace MusicLibrary.Core.Models;
 
 public class Artist : TrackableEntity
 {
-    public virtual Guid GenreId { get; protected set; }
-    public virtual string Name { get; protected set; }
+    public virtual Guid GenreId { get; protected internal set; }
+    public virtual string Name { get; protected internal set; }
 
     #region Navigation properties
 

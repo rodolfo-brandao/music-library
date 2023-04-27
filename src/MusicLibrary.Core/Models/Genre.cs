@@ -4,7 +4,7 @@ namespace MusicLibrary.Core.Models;
 
 public class Genre : TrackableEntity
 {
-    public virtual string Name { get; protected set; }
+    public virtual string Name { get; protected internal set; }
 
     #region Navigation properties
 

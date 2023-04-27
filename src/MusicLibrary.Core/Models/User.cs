@@ -4,11 +4,11 @@ namespace MusicLibrary.Core.Models;
 
 public class User : TrackableEntity
 {
-    public virtual string Username { get; protected set; }
-    public virtual string Email { get; protected set; }
-    public virtual string Password { get; protected set; }
-    public virtual string PasswordSalt { get; protected set; }
-    public virtual string Role { get; protected set; }
+    public virtual string Username { get; protected internal set; }
+    public virtual string Email { get; protected internal set; }
+    public virtual string Password { get; protected internal set; }
+    public virtual string PasswordSalt { get; protected internal set; }
+    public virtual string Role { get; protected internal set; }
 
     public virtual User ChangeUsername(string username)
     {
