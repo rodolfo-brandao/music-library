@@ -49,6 +49,6 @@ public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<Li
 
         var response = _mapper.Map<List<DefaultArtistResponse>>(artists.ToList());
         var apiResult = new ApiResult<List<DefaultArtistResponse>>((int)HttpStatusCode.OK) { Response = response };
-        return await Task.FromResult(apiResult);
+        return apiResult;
     }
 }
