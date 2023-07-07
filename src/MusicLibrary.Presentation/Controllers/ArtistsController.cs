@@ -12,6 +12,7 @@ namespace MusicLibrary.Presentation.Controllers;
 /// API Controller to handle requests related to Artists.
 /// </summary>
 [ApiController, ApiVersion("1"), Produces(ContentTypes.Json)]
+[Authorize(Roles = AuthorizationRoles.AdminUser)]
 [Route("api/[controller]/v{version:ApiVersion}")]
 public class ArtistsController : ResponseHandlerController
 {
@@ -26,14 +27,12 @@ public class ArtistsController : ResponseHandlerController
     }
 
     /// <summary>
-    /// Lists all artists
+    /// Lists all artists.
     /// </summary>
-    /// <response code="200">Returns a list containing all artists</response>
-    [AllowAnonymous]
+    /// <response code="200">Returns a list containing all artists.</response>
     [HttpGet(Name = "list-artists")]
-    [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(List<DefaultArtistResponse>))]
-    public async Task<IActionResult> ListArtistAsync([FromQuery] ListArtistsQuery query,
-        CancellationToken cancellationToken)
+    [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(DefaultArtistResponse[]))]
+    public async Task<IActionResult> ListArtistAsync([FromQuery] ListArtistsQuery query, CancellationToken cancellationToken = default)
     {
         var apiResult = await _mediator.Send(query, cancellationToken);
         return BuildResponse(apiResult);
