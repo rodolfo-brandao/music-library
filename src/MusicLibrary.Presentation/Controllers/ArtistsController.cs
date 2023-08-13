@@ -19,7 +19,7 @@ public class ArtistsController : ResponseHandlerController
     private readonly IMediator _mediator;
 
     /// <summary>
-    /// Public constructor to initialize an instance of <see cref="IMediator"/>.
+    /// Public constructor to inject <paramref name="mediator"/>.
     /// </summary>
     public ArtistsController(IMediator mediator)
     {
@@ -29,12 +29,13 @@ public class ArtistsController : ResponseHandlerController
     /// <summary>
     /// Lists all artists.
     /// </summary>
+    /// <param name="query">The object containing the query params.</param>
+    /// <param name="cancellationToken">The cancellation token object.</param>
     /// <response code="200">Returns a list containing all artists.</response>
     [HttpGet(Name = "list-artists")]
     [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(DefaultArtistResponse[]))]
     public async Task<IActionResult> ListArtistAsync([FromQuery] ListArtistsQuery query, CancellationToken cancellationToken = default)
     {
-        var apiResult = await _mediator.Send(query, cancellationToken);
-        return BuildResponse(apiResult);
+        return BuildResponse(await _mediator.Send(query, cancellationToken));
     }
 }
