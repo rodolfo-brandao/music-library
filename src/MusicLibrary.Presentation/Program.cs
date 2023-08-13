@@ -21,7 +21,7 @@ var configuration = builder.Configuration;
     builder.Services.AddCustomSwagger(configuration);
     builder.Services.AddCustomFactories();
     builder.Services.AddCustomRepositories();
-    builder.Services.AddCustomUnitiesOfWork();
+    builder.Services.AddCustomUnitsOfWork();
     builder.Services.AddCustomMvc();
     builder.Services.AddCustomSerilog(builder.Host);
 }

@@ -35,7 +35,7 @@ public static class ServiceCollectionExtension
             .AddScoped<IUserRepository, UserRepository>();
     }
 
-    public static IServiceCollection AddCustomUnitiesOfWork(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCustomUnitsOfWork(this IServiceCollection serviceCollection)
     {
         return serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
     }
