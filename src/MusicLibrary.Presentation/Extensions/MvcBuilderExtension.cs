@@ -5,7 +5,7 @@ namespace MusicLibrary.Presentation.Extensions;
 
 internal static class MvcBuilderExtension
 {
-    public static IMvcBuilder ConfigureMvc(this IServiceCollection serviceCollection)
+    public static IMvcBuilder AddCustomMvc(this IServiceCollection serviceCollection)
     {
         return serviceCollection.AddMvc(options =>
         {

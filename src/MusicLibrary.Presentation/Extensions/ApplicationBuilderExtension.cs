@@ -2,7 +2,7 @@ namespace MusicLibrary.Presentation.Extensions;
 
 internal static class ApplicationBuilderExtension
 {
-    public static IApplicationBuilder ConfigureCors(this IApplicationBuilder applicationBuilder)
+    public static IApplicationBuilder AddCustomCorsPolicy(this IApplicationBuilder applicationBuilder)
     {
         return applicationBuilder.UseCors(corsPolicyBuilder =>
         {
@@ -12,7 +12,7 @@ internal static class ApplicationBuilderExtension
         });
     }
     
-    public static IApplicationBuilder ConfigureSwaggerUse(this IApplicationBuilder applicationBuilder)
+    public static IApplicationBuilder AddCustomSwaggerUse(this IApplicationBuilder applicationBuilder)
     {
         return applicationBuilder
             .UseSwagger()

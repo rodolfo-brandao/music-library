@@ -12,20 +12,19 @@ namespace MusicLibrary.Data.Extensions;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection ConfigureDbContext(this IServiceCollection serviceCollection,
+    public static IServiceCollection AddCustomDbContext(this IServiceCollection serviceCollection,
         IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
-        return serviceCollection.AddDbContext<MusicLibraryDbContext>(optionsAction =>
-            optionsAction.UseSqlite(connectionString));
+        return serviceCollection.AddDbContext<MusicLibraryDbContext>(optionsAction => optionsAction.UseSqlite(connectionString));
     }
 
-    public static IServiceCollection AddFactories(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCustomFactories(this IServiceCollection serviceCollection)
     {
         return serviceCollection.AddScoped<IModelFactory, ModelFactory>();
     }
 
-    public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCustomRepositories(this IServiceCollection serviceCollection)
     {
         return serviceCollection
             .AddScoped(typeof(IRepository<>), typeof(Repository<>))
@@ -36,7 +35,7 @@ public static class ServiceCollectionExtension
             .AddScoped<IUserRepository, UserRepository>();
     }
 
-    public static IServiceCollection AddUnities(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCustomUnitiesOfWork(this IServiceCollection serviceCollection)
     {
         return serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
     }

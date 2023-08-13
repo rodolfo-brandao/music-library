@@ -11,8 +11,11 @@ internal static class ModelBuilderExtension
     public static ModelBuilder SeedModel<TEntity>(this ModelBuilder modelBuilder, string path) where TEntity : Entity
     {
         using var streamReader = new StreamReader(path);
-        var models = JsonConvert.DeserializeObject<List<TEntity>>(streamReader.ReadToEnd(),
-            new JsonSerializerSettings { ContractResolver = new NonPublicPropertiesResolver() });
+        var models = JsonConvert.DeserializeObject<List<TEntity>>(streamReader.ReadToEnd(), new JsonSerializerSettings
+        {
+            ContractResolver = new NonPublicPropertiesResolver()
+        });
+        
         modelBuilder.Entity<TEntity>().HasData(models);
         return modelBuilder;
     }
@@ -28,8 +31,8 @@ internal static class ModelBuilderExtension
                 return jsonProperty;
             }
 
-            jsonProperty.Readable = (propertyInfo.GetMethod != null);
-            jsonProperty.Writable = (propertyInfo.SetMethod != null);
+            jsonProperty.Readable = propertyInfo.GetMethod != null;
+            jsonProperty.Writable = propertyInfo.SetMethod != null;
             return jsonProperty;
         }
     }

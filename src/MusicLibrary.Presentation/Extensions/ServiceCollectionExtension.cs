@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MusicLibrary.Application.Utils;
 using Serilog;
 
 namespace MusicLibrary.Presentation.Extensions;
@@ -18,7 +19,7 @@ internal static class ServiceCollectionExtension
 
     #region Public methods
 
-    public static IServiceCollection ConfigureApiVersioning(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCustomApiVersioning(this IServiceCollection serviceCollection)
     {
         return serviceCollection.AddApiVersioning(options =>
         {
@@ -32,18 +33,16 @@ internal static class ServiceCollectionExtension
         });
     }
 
-    public static IServiceCollection AddAuthorizationPolicy(this IServiceCollection serviceCollection,
-        IConfiguration configuration)
+    public static IServiceCollection AddCustomAuthorizationPolicy(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         var jwtSecret = configuration.GetSection("Jwt:Secret").Value;
         var jwtSecretBytes = Encoding.ASCII.GetBytes(jwtSecret ?? string.Empty);
-        const string adminAuthorizationRole = "admin"; // TODO: Move this raw string value to enum
-        const string userAuthorizationRole = "user"; // TODO: Move this raw string value to enum
+        const string adminAuthorizationRole = AuthorizationRoles.Admin;
+        const string userAuthorizationRole = AuthorizationRoles.User;
 
         _ = serviceCollection.AddAuthorization(options =>
         {
-            options.AddPolicy(adminAuthorizationRole,
-                policy => policy.RequireClaim("User", adminAuthorizationRole));
+            options.AddPolicy(adminAuthorizationRole, policy => policy.RequireClaim("User", adminAuthorizationRole));
             options.AddPolicy(userAuthorizationRole, policy => policy.RequireClaim("User", userAuthorizationRole));
         }).AddAuthentication(options =>
         {
@@ -65,13 +64,15 @@ internal static class ServiceCollectionExtension
         return serviceCollection;
     }
 
-    public static IServiceCollection ConfigureRouting(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCustomRouting(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddRouting(routeOptions => { routeOptions.LowercaseUrls = true; });
+        return serviceCollection.AddRouting(routeOptions =>
+        {
+            routeOptions.LowercaseUrls = true;
+        });
     }
 
-    public static IServiceCollection ConfigureSerilog(this IServiceCollection serviceCollection,
-        ConfigureHostBuilder configureHostBuilder)
+    public static IServiceCollection AddCustomSerilog(this IServiceCollection serviceCollection, ConfigureHostBuilder configureHostBuilder)
     {
         var configurationBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json").Build();
         Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configurationBuilder).CreateLogger();
@@ -80,7 +81,7 @@ internal static class ServiceCollectionExtension
         return serviceCollection.AddSingleton(Log.Logger);
     }
 
-    public static IServiceCollection ConfigureSwagger(this IServiceCollection serviceCollection,
+    public static IServiceCollection AddCustomSwagger(this IServiceCollection serviceCollection,
         IConfiguration configuration)
     {
         return serviceCollection.AddSwaggerGen(options =>
@@ -90,8 +91,7 @@ internal static class ServiceCollectionExtension
             options.SwaggerDoc("v1", openApiInfo);
             options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
             {
-                Description =
-                    $"{BearerTokenFormat} authorization header using {JwtBearerDefaults.AuthenticationScheme} scheme. \r\n\r\nTo authenticate, simply enter '{JwtBearerDefaults.AuthenticationScheme} <your_access_token>'",
+                Description = $"{BearerTokenFormat} authorization header using {JwtBearerDefaults.AuthenticationScheme} scheme. \r\n\r\nTo authenticate, simply enter '{JwtBearerDefaults.AuthenticationScheme} <your_access_token>'",
                 Name = "Authorization",
                 In = ParameterLocation.Header,
                 Scheme = JwtBearerDefaults.AuthenticationScheme,
