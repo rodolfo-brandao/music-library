@@ -7,36 +7,41 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-builder.Services.AddControllers();
-builder.Services.ConfigureApiVersioning();
-builder.Services.ConfigureAutoMapper();
-builder.Services.ConfigureMediatR();
-builder.Services.ResolveServices();
-builder.Services.AddAuthorizationPolicy(configuration);
-builder.Services.ConfigureDbContext(configuration);
-builder.Services.ConfigureRouting();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.ConfigureSwagger(configuration);
-builder.Services.AddFactories();
-builder.Services.AddRepositories();
-builder.Services.AddUnities();
-builder.Services.ConfigureMvc();
-builder.Services.ConfigureSerilog(builder.Host);
+{
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+
+    builder.Services.AddCustomApiVersioning();
+    builder.Services.AddCustomAutoMapper();
+    builder.Services.AddCustomMediatR();
+    builder.Services.AddCustomServices();
+    builder.Services.AddCustomAuthorizationPolicy(configuration);
+    builder.Services.AddCustomDbContext(configuration);
+    builder.Services.AddCustomRouting();
+    builder.Services.AddCustomSwagger(configuration);
+    builder.Services.AddCustomFactories();
+    builder.Services.AddCustomRepositories();
+    builder.Services.AddCustomUnitiesOfWork();
+    builder.Services.AddCustomMvc();
+    builder.Services.AddCustomSerilog(builder.Host);
+}
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage().ConfigureSwaggerUse();
-}
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage().AddCustomSwaggerUse();
+    }
 
-app.ConfigureCors();
-app.UseHttpsRedirection();
-app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
-app.UseMiddleware<ExceptionMiddleware>();
-app.MapControllers();
-app.UseSerilogRequestLogging();
-app.MapControllers();
-app.Run();
+    app.AddCustomCorsPolicy();
+    app.UseHttpsRedirection();
+    app.UseRouting();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseMiddleware<ExceptionMiddleware>();
+    app.MapControllers();
+    app.UseSerilogRequestLogging();
+    app.MapControllers();
+    app.Run();
+}
