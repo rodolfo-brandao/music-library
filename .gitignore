@@ -48,6 +48,8 @@ global.json
 
 # SQLite files
 *.db
+*.db-shm
+*.db-wal
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
