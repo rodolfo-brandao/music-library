@@ -1,4 +1,3 @@
-using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -12,12 +11,10 @@ namespace MusicLibrary.Application.Queries.Artists.ListArtists;
 public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<IEnumerable<DefaultArtistResponse>>>
 {
     private readonly IArtistRepository _artistRepository;
-    private readonly IMapper _mapper;
 
-    public ListArtistsHandler(IArtistRepository artistRepository, IMapper mapper)
+    public ListArtistsHandler(IArtistRepository artistRepository)
     {
         _artistRepository = artistRepository;
-        _mapper = mapper;
     }
 
     public async Task<ApiResult<IEnumerable<DefaultArtistResponse>>> Handle(ListArtistsQuery request, CancellationToken cancellationToken)
@@ -43,7 +40,11 @@ public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<IE
                 ? artists.OrderByDescending(artist => artist.Name).ToList()
                 : artists.OrderBy(artist => artist.Name).ToList();
 
-            apiResult.Response = _mapper.Map<IEnumerable<DefaultArtistResponse>>(artists.ToList());
+            artists.ForEach(artist => apiResult.Response.Append(new DefaultArtistResponse
+            {
+                Id = artist.Id,
+                Name = artist.Name
+            }));
         }
 
         return apiResult;

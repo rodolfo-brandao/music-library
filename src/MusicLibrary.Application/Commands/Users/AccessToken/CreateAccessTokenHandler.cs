@@ -1,4 +1,3 @@
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using MusicLibrary.Application.Responses.Users;
@@ -13,23 +12,21 @@ public class CreateTokenHandler : IRequestHandler<CreateAccessTokenCommand, ApiR
 {
     private readonly IUserRepository _userRepository;
     private readonly ISecurityService _securityService;
-    private readonly IMapper _mapper;
     private readonly ILogger _logger;
 
-    public CreateTokenHandler(IUserRepository userRepository, ISecurityService securityService, IMapper mapper, ILogger logger)
+    public CreateTokenHandler(IUserRepository userRepository, ISecurityService securityService, ILogger logger)
     {
         _userRepository = userRepository;
         _securityService = securityService;
-        _mapper = mapper;
         _logger = logger;
     }
 
     public async Task<ApiResult<CreatedAccessTokenResponse>> Handle(CreateAccessTokenCommand request, CancellationToken cancellationToken)
     {
-        _logger.Debug("Preparing to create access token for user '{username}'.", request.Username);
+        _logger.Debug("Preparing to create access token for user: {Username}", request.Username);
 
         var apiResult = new ApiResult<CreatedAccessTokenResponse>();
-        var user = await _userRepository.GetByUsername(request.Username, isReadOnly: true);
+        var user = await _userRepository.GetByUsernameAsync(request.Username, isReadOnly: true);
         var validation = await new CreateAccessTokenValidator(user, _securityService).ValidateAsync(request, cancellationToken);
 
         if (!validation.IsValid)
@@ -41,10 +38,14 @@ public class CreateTokenHandler : IRequestHandler<CreateAccessTokenCommand, ApiR
         }
         else
         {
-            var response = _mapper.Map<CreatedAccessTokenResponse>(user);
-            response.AccessToken = _securityService.CreateUserAccessToken(user);
-            apiResult.Response = response;
-            _logger.Debug("Access token created successfully for user '{username}'.", response.Username);
+            apiResult.Response = new CreatedAccessTokenResponse
+            {
+                UserId = user.Id,
+                Username = user.Username,
+                AccessToken = _securityService.CreateUserAccessToken(user)
+            };
+
+            _logger.Debug("Access token created successfully for user: {Username}", request.Username);
         }
 
         return apiResult;

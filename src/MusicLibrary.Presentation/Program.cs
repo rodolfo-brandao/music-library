@@ -12,7 +12,6 @@ var configuration = builder.Configuration;
     builder.Services.AddEndpointsApiExplorer();
 
     builder.Services.AddCustomApiVersioning();
-    builder.Services.AddCustomAutoMapper();
     builder.Services.AddCustomMediatR();
     builder.Services.AddCustomServices();
     builder.Services.AddCustomAuthorizationPolicy(configuration);
