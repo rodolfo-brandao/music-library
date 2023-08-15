@@ -4,5 +4,5 @@ namespace MusicLibrary.Core.Contracts.Repositories;
 
 public interface IUserRepository : IRepository<User>
 {
-    Task<User> GetByUsername(string username, bool isReadOnly = default);
+    Task<User> GetByUsernameAsync(string username, bool isReadOnly = default);
 }

@@ -12,7 +12,7 @@ public class UserRepository : Repository<User>, IUserRepository
     {
     }
 
-    public async Task<User> GetByUsername(string username, bool isReadOnly = default)
+    public async Task<User> GetByUsernameAsync(string username, bool isReadOnly = default)
     {
         return await Query(user => user.Username.Equals(username), isReadOnly: isReadOnly).FirstOrDefaultAsync() ??
                new NullUser();
