@@ -1,4 +1,4 @@
-using MusicLibrary.Core.Contracts.Unities;
+using MusicLibrary.Core.Contracts.Units;
 using MusicLibrary.Data.Context;
 
 namespace MusicLibrary.Data.Unities;

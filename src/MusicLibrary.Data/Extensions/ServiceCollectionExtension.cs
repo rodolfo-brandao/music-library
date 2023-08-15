@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MusicLibrary.Core.Contracts.Repositories;
-using MusicLibrary.Core.Contracts.Unities;
+using MusicLibrary.Core.Contracts.Units;
 using MusicLibrary.Core.Factories;
 using MusicLibrary.Data.Context;
 using MusicLibrary.Data.Repositories;
