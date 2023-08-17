@@ -8,13 +8,13 @@ using Serilog;
 
 namespace MusicLibrary.Application.Commands.Users.AccessToken;
 
-public class CreateTokenHandler : IRequestHandler<CreateAccessTokenCommand, ApiResult<CreatedAccessTokenResponse>>
+public class CreateAccessTokenHandler : IRequestHandler<CreateAccessTokenCommand, ApiResult<CreatedAccessTokenResponse>>
 {
     private readonly IUserRepository _userRepository;
     private readonly ISecurityService _securityService;
     private readonly ILogger _logger;
 
-    public CreateTokenHandler(IUserRepository userRepository, ISecurityService securityService, ILogger logger)
+    public CreateAccessTokenHandler(IUserRepository userRepository, ISecurityService securityService, ILogger logger)
     {
         _userRepository = userRepository;
         _securityService = securityService;
@@ -31,10 +31,11 @@ public class CreateTokenHandler : IRequestHandler<CreateAccessTokenCommand, ApiR
 
         if (!validation.IsValid)
         {
-            var errorMessage = validation.Errors.First().ErrorMessage;
-            _logger.Debug(errorMessage, request.Username);
+            var errorMessage = validation.Errors.Single().ErrorMessage;
             apiResult.StatusCode = StatusCodes.Status400BadRequest;
             apiResult.ErrorMessage = errorMessage;
+
+            _logger.Debug("An error occurred while trying to create the access token. Reason: {ErrorMessage}", errorMessage);
         }
         else
         {
