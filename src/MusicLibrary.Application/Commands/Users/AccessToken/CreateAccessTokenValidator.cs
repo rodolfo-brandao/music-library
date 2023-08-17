@@ -11,7 +11,6 @@ public class CreateAccessTokenValidator : AbstractValidator<CreateAccessTokenCom
     public CreateAccessTokenValidator(User user, ISecurityService securityService)
     {
         ClassLevelCascadeMode = CascadeMode.Stop;
-        RuleLevelCascadeMode = CascadeMode.Stop;
 
         RuleFor(command => command.Username)
             .NotEmpty()
