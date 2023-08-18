@@ -50,7 +50,7 @@ public class CreateAccessTokenHandlerTest
         sut.ErrorMessage.Should().BeNull();
     }
 
-    [Theory(DisplayName = "Handle() - Failure Case: command object with null properties")]
+    [Theory(DisplayName = "Handle() - Failure Cases (3): command object with null properties")]
     [ClassData(typeof(CreateAccessTokenInvalidCommands))]
     public async Task Handle_PassInvalidCommandObject_HandlerShouldNotCreateAccessToken(
         CreateAccessTokenCommand command)
