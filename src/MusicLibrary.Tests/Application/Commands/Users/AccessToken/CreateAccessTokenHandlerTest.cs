@@ -8,7 +8,7 @@ using MusicLibrary.Tests.Setup.Fakers.Commands.Users.AccessToken;
 using MusicLibrary.Tests.Setup.Fakers.Models;
 using Serilog;
 
-namespace MusicLibrary.Tests.Application.Users.Commands.AccessToken;
+namespace MusicLibrary.Tests.Application.Commands.Users.AccessToken;
 
 [Trait("Handler", "CreateAccessToken")]
 public class CreateAccessTokenHandlerTest
@@ -26,7 +26,6 @@ public class CreateAccessTokenHandlerTest
         // Arrange:
         var command = CreateAccessTokenCommandFake.Valid;
         var user = UserModelFake.Valid(username: command.Username);
-        var cancellationToken = default(CancellationToken);
 
         var userRepository = UserRepositoryMockBuilder
             .Create()
@@ -42,7 +41,7 @@ public class CreateAccessTokenHandlerTest
         var handler = new CreateAccessTokenHandler(userRepository, securityService, _logger);
 
         // Act:
-        var sut = await handler.Handle(command, cancellationToken);
+        var sut = await handler.Handle(command, cancellationToken: default);
 
         // Assert:
         sut.Should().NotBeNull().And.BeOfType<ApiResult<CreatedAccessTokenResponse>>();
@@ -57,7 +56,6 @@ public class CreateAccessTokenHandlerTest
     {
         // Arrange:
         var user = UserModelFake.Valid(username: command.Username);
-        var cancellationToken = default(CancellationToken);
 
         var userRepository = UserRepositoryMockBuilder
             .Create()
@@ -73,7 +71,7 @@ public class CreateAccessTokenHandlerTest
         var handler = new CreateAccessTokenHandler(userRepository, securityService, _logger);
 
         // Act:
-        var sut = await handler.Handle(command, cancellationToken);
+        var sut = await handler.Handle(command, cancellationToken: default);
 
         // Assert:
         sut.Should().NotBeNull().And.BeOfType<ApiResult<CreatedAccessTokenResponse>>();
