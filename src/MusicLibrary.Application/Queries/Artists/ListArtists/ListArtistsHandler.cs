@@ -30,6 +30,7 @@ public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<IE
         }
         else
         {
+            apiResult.Response = Enumerable.Empty<DefaultArtistResponse>();
             var artists = _artistRepository
                 .Query(artist => !artist.IsDisabled, isReadOnly: true)
                 .ToList();
@@ -46,15 +47,14 @@ public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<IE
                     : artists.OrderBy(artist => artist.Name))
                 .ToList();
 
-            apiResult.Response = Enumerable.Empty<DefaultArtistResponse>();
-            foreach (var artist in artists)
+            artists.ForEach(artist =>
             {
                 apiResult.Response = apiResult.Response.Append(new DefaultArtistResponse
                 {
                     Id = artist.Id,
                     Name = artist.Name
                 });
-            }
+            });
         }
 
         return apiResult;
