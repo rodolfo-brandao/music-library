@@ -17,7 +17,8 @@ public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<IE
         _artistRepository = artistRepository;
     }
 
-    public async Task<ApiResult<IEnumerable<DefaultArtistResponse>>> Handle(ListArtistsQuery request, CancellationToken cancellationToken)
+    public async Task<ApiResult<IEnumerable<DefaultArtistResponse>>> Handle(ListArtistsQuery request,
+        CancellationToken cancellationToken)
     {
         var apiResult = new ApiResult<IEnumerable<DefaultArtistResponse>>();
         var validation = await new ListArtistsQueryValidator().ValidateAsync(request, cancellationToken);
@@ -29,22 +30,31 @@ public class ListArtistsHandler : IRequestHandler<ListArtistsQuery, ApiResult<IE
         }
         else
         {
-            var artists = await _artistRepository.Query(artist => !artist.IsDisabled, isReadOnly: true).ToListAsync();
+            var artists = _artistRepository
+                .Query(artist => !artist.IsDisabled, isReadOnly: true)
+                .ToList();
 
             if (!string.IsNullOrWhiteSpace(request.Name))
             {
-                artists = artists.Where(artist => artist.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase)).ToList();
+                artists = artists
+                    .Where(artist => artist.Name.Contains(request.Name, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
             }
 
-            artists = request.OrderBy.Equals("desc", StringComparison.OrdinalIgnoreCase)
-                ? artists.OrderByDescending(artist => artist.Name).ToList()
-                : artists.OrderBy(artist => artist.Name).ToList();
+            artists = (request.OrderBy.Equals("desc", StringComparison.OrdinalIgnoreCase)
+                    ? artists.OrderByDescending(artist => artist.Name)
+                    : artists.OrderBy(artist => artist.Name))
+                .ToList();
 
-            artists.ForEach(artist => apiResult.Response.Append(new DefaultArtistResponse
+            apiResult.Response = Enumerable.Empty<DefaultArtistResponse>();
+            foreach (var artist in artists)
             {
-                Id = artist.Id,
-                Name = artist.Name
-            }));
+                apiResult.Response = apiResult.Response.Append(new DefaultArtistResponse
+                {
+                    Id = artist.Id,
+                    Name = artist.Name
+                });
+            }
         }
 
         return apiResult;
