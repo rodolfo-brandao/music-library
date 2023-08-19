@@ -51,11 +51,12 @@ public class ListArtistsHandlerTest
 
         var artists = Enumerable
             .Range(start: default, count: 5)
-            .Select(_ => ArtistModelFake.Valid);
+            .Select(_ => ArtistModelFake.Valid)
+            .ToArray();
 
         var artistRepository = ArtistRepositoryMockBuilder
             .Create()
-            .SetupQuery(artists.ToArray())
+            .SetupQuery(artists)
             .Build();
 
         var handler = new ListArtistsHandler(artistRepository);
