@@ -4,7 +4,7 @@ namespace MusicLibrary.Application.Queries.Artists.ListArtists;
 
 public class ListArtistsQueryValidator : AbstractValidator<ListArtistsQuery>
 {
-    private readonly IEnumerable<string> _allowedOrderParamValues = new List<string>() { "asc", "desc" };
+    private readonly string[] _allowedOrderParamValues = { "asc", "desc" };
 
     public ListArtistsQueryValidator()
     {
