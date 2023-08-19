@@ -34,7 +34,8 @@ public class ArtistsController : ResponseHandlerController
     /// <response code="200">Returns a list containing all artists.</response>
     [HttpGet(Name = "list-artists")]
     [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(DefaultArtistResponse[]))]
-    public async Task<IActionResult> ListArtistAsync([FromQuery] ListArtistsQuery query, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> ListArtistsAsync([FromQuery] ListArtistsQuery query,
+        CancellationToken cancellationToken = default)
     {
         return BuildResponse(await _mediator.Send(query, cancellationToken));
     }
