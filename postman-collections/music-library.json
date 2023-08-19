@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "9902ad09-e27c-4daa-a025-4c068b364991",
+		"name": "Music Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Artists",
+			"item": [
+				{
+					"name": "api/artists/v1",
+					"_postman_id": "77dcbca7-bfa9-408f-91aa-56d98dce5cf9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/artists/v1?orderBy=asc",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"artists",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "986c7211-396b-4b1a-bb68-9b5cbc0118b2"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "api/users/v1/token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b98840b-c5d0-457d-86d9-626e335d6fbb",
+								"exec": [
+									"if (pm.response.code == 200) {",
+									"    pm.collectionVariables.set(\"accessToken\", pm.response.json().accessToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "a64b1197-d2ad-409f-b4fe-888daebbe222",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"adminuser\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{localhost}}/api/users/v1/token"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "b5520b1b-ac2f-4465-952f-ffd78bbe1219"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{accessToken}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ab9ba94d-7fea-4a4a-a337-7e005fd9697f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ff4c5395-7e1d-44ce-ae2e-6d6708154328",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "389dcdcd-210b-4c60-badc-0b90d008e744",
+			"key": "localhost",
+			"value": "https://localhost:7233",
+			"type": "string"
+		},
+		{
+			"id": "6688d6fd-6182-4585-9907-0b83faf01bb9",
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
