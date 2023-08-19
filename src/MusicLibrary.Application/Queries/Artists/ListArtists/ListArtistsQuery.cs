@@ -6,6 +6,6 @@ namespace MusicLibrary.Application.Queries.Artists.ListArtists;
 
 public class ListArtistsQuery : IRequest<ApiResult<IEnumerable<DefaultArtistResponse>>>
 {
-    public string Name { get; set; } = default;
-    public string OrderBy { get; set; } = "asc";
+    public string Name { get; init; } = default;
+    public string OrderBy { get; init; } = "asc";
 }
