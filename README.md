@@ -61,7 +61,7 @@ After that, the application's Swagger will be available via HTTPS at `localhost:
 
 ## Data Model
 
-<img src="assets/data-model.png" witdh="450" />
+<img src="assets/data-model.png" witdh="500" />
 
 ## Disclaimers
 1. Despite having no relationship with the other entities in the data model, the **User** table was created only to allow the control of actions over the application's [CRUD](https://pt.wikipedia.org/wiki/CRUD). Where, to create and delete an entity, only users with `admin` access level can do such actions. As for queries, execution by any user is allowed.
