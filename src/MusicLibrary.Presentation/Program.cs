@@ -16,6 +16,7 @@ var configuration = builder.Configuration;
     builder.Services.AddCustomServices();
     builder.Services.AddCustomAuthorizationPolicy(configuration);
     builder.Services.AddCustomDbContext(configuration);
+    builder.Services.AddCustomRedisInstance(configuration);
     builder.Services.AddCustomRouting();
     builder.Services.AddCustomSwagger(configuration);
     builder.Services.AddCustomFactories();

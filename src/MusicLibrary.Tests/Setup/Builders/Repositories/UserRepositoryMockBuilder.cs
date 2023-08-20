@@ -17,9 +17,10 @@ internal sealed class UserRepositoryMockBuilder
 
     public static UserRepositoryMockBuilder Create() => new();
 
-    public UserRepositoryMockBuilder SetupGetByUsernameAsync(User userModelToBeReturned = default)
+    public UserRepositoryMockBuilder SetupGetByKeyAsync(User userModelToBeReturned = default)
     {
-        _mock.Setup(userRepository => userRepository.GetByUsernameAsync(It.IsAny<string>(), It.IsAny<bool>())).ReturnsAsync(userModelToBeReturned ?? new NullUser());
+        _mock.Setup(userRepository => userRepository.GetByKeyAsync(It.IsAny<string>()))
+            .ReturnsAsync(userModelToBeReturned ?? new NullUser());
         return this;
     }
 }

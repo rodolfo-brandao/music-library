@@ -1,8 +1,8 @@
+using MusicLibrary.Core.Contracts.Repositories.Redis;
 using MusicLibrary.Core.Models;
 
 namespace MusicLibrary.Core.Contracts.Repositories;
 
-public interface IUserRepository : IRepository<User>
+public interface IUserRepository : IRedisRepository<User>
 {
-    Task<User> GetByUsernameAsync(string username, bool isReadOnly = default);
 }
