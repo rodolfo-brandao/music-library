@@ -5,17 +5,11 @@ namespace MusicLibrary.Core.Models.Nulls;
 public sealed class NullUser : User, INullObject
 {
     public override string Username => string.Empty;
-    public override string Email => string.Empty;
     public override string Password => string.Empty;
     public override string PasswordSalt => string.Empty;
     public override string Role => string.Empty;
 
     public override User ChangeUsername(string username)
-    {
-        return this;
-    }
-
-    public override User ChangeEmail(string email)
     {
         return this;
     }

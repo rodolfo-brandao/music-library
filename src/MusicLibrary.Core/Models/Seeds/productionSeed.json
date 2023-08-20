@@ -4,7 +4,7 @@
         "artistId": "1895EDF2-3432-4C67-928A-7EAB36770E78",
         "title": "Da Funk",
         "productionType": 3,
-        "releaseYear": 1995,
+        "releaseDate": "1995-05-08",
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -14,7 +14,7 @@
         "artistId": "90C847A3-9D97-46EB-A8A1-50985C262DC7",
         "title": "Ride the Lightning",
         "productionType": 1,
-        "releaseYear": 1984,
+        "releaseDate": "1984-07-27",
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false

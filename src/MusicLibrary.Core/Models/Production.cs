@@ -8,12 +8,12 @@ public class Production : TrackableEntity
     public virtual Guid ArtistId { get; protected internal set; }
     public virtual string Title { get; protected internal set; }
     public virtual ProductionType ProductionType { get; protected internal set; }
-    public virtual ushort ReleaseYear { get; protected internal set; }
+    public virtual string ReleaseDate { get; protected internal set; }
 
     #region Navigaton properties
 
     public Artist Artist { get; protected set; }
-    public ICollection<Music> Musics { get; protected set; } = new List<Music>();
+    public ICollection<Track> Tracks { get; protected set; } = new List<Track>();
 
     #endregion
 
@@ -29,9 +29,9 @@ public class Production : TrackableEntity
         return this;
     }
 
-    public virtual Production ChangeReleaseYear(ushort releaseYear)
+    public virtual Production ChangeReleaseDate(string releaseDate)
     {
-        ReleaseYear = releaseYear;
+        ReleaseDate = releaseDate;
         return this;
     }
 

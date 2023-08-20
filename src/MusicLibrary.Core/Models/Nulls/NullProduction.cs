@@ -8,7 +8,7 @@ public sealed class NullProduction : Production, INullObject
     public override Guid ArtistId => Guid.Empty;
     public override string Title => string.Empty;
     public override ProductionType ProductionType => default;
-    public override ushort ReleaseYear => ushort.MinValue;
+    public override string ReleaseDate => default;
 
     public override Production ChangeTitle(string title)
     {
@@ -20,7 +20,7 @@ public sealed class NullProduction : Production, INullObject
         return this;
     }
 
-    public override Production ChangeReleaseYear(ushort releaseYear)
+    public override Production ChangeReleaseDate(string releaseDate)
     {
         return this;
     }

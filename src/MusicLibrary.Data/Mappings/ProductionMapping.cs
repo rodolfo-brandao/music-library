@@ -32,7 +32,7 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
             .HasColumnName("production_type")
             .IsRequired();
 
-        builder.Property(production => production.ReleaseYear)
+        builder.Property(production => production.ReleaseDate)
             .HasColumnType("TINYINT")
             .HasColumnName("release_year")
             .IsRequired();
@@ -52,9 +52,9 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
             .HasColumnName("is_disabled")
             .IsRequired();
 
-        builder.HasMany(production => production.Musics)
-            .WithOne(music => music.Production)
-            .HasForeignKey(music => music.ProductionId)
+        builder.HasMany(production => production.Tracks)
+            .WithOne(track => track.Production)
+            .HasForeignKey(track => track.ProductionId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
