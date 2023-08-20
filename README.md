@@ -1,6 +1,7 @@
 
 
 
+
 # Music Library
 
 ![Workflow: .NET](https://github.com/rodolfo-brandao/music-library/actions/workflows/dotnet-ci.yml/badge.svg)
@@ -65,7 +66,9 @@ mkdir SQLite
 
 2. Now, in the `/src` directory, create the `.db` file mentioned previously:
 ```bash
-dotnet ef database update --project MusicLibrary.Data --startup-project MusicLibrary.Presentation
+dotnet ef database update \
+--project MusicLibrary.Data \
+--startup-project MusicLibrary.Presentation
 ```
 
 ---
