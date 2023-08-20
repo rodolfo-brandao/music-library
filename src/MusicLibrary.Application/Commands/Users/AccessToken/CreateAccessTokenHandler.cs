@@ -21,13 +21,15 @@ public class CreateAccessTokenHandler : IRequestHandler<CreateAccessTokenCommand
         _logger = logger;
     }
 
-    public async Task<ApiResult<CreatedAccessTokenResponse>> Handle(CreateAccessTokenCommand request, CancellationToken cancellationToken)
+    public async Task<ApiResult<CreatedAccessTokenResponse>> Handle(CreateAccessTokenCommand request,
+        CancellationToken cancellationToken)
     {
         _logger.Debug("Preparing to create access token for user: {Username}", request.Username);
 
         var apiResult = new ApiResult<CreatedAccessTokenResponse>();
-        var user = await _userRepository.GetByUsernameAsync(request.Username, isReadOnly: true);
-        var validation = await new CreateAccessTokenValidator(user, _securityService).ValidateAsync(request, cancellationToken);
+        var user = await _userRepository.GetByKeyAsync(request.Username);
+        var validation =
+            await new CreateAccessTokenValidator(user, _securityService).ValidateAsync(request, cancellationToken);
 
         if (!validation.IsValid)
         {
@@ -35,7 +37,8 @@ public class CreateAccessTokenHandler : IRequestHandler<CreateAccessTokenCommand
             apiResult.StatusCode = StatusCodes.Status400BadRequest;
             apiResult.ErrorMessage = errorMessage;
 
-            _logger.Debug("An error occurred while trying to create the access token. Reason: {ErrorMessage}", errorMessage);
+            _logger.Debug("An error occurred while trying to create the access token. Reason: {ErrorMessage}",
+                errorMessage);
         }
         else
         {
