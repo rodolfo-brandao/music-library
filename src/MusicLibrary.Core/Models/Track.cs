@@ -2,12 +2,12 @@ using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models;
 
-public class Music : TrackableEntity
+public class Track : TrackableEntity
 {
     public virtual Guid ProductionId { get; protected internal set; }
-    public virtual byte OrdinalPosition { get; protected internal set; }
+    public virtual byte Position { get; protected internal set; }
     public virtual string Title { get; protected internal set; }
-    public virtual float DurationInMinutes { get; protected internal set; }
+    public virtual float Length { get; protected internal set; }
 
     #region Navigation properties
 
@@ -15,27 +15,27 @@ public class Music : TrackableEntity
 
     #endregion
 
-    public virtual Music ChangeProduction(Guid productionId)
+    public virtual Track ChangeProduction(Guid productionId)
     {
         ProductionId = productionId;
         return this;
     }
 
-    public virtual Music ChangeOrdinalPosition(byte ordinalPosition)
+    public virtual Track ChangePosition(byte position)
     {
-        OrdinalPosition = ordinalPosition;
+        Position = position;
         return this;
     }
 
-    public virtual Music ChangeTitle(string title)
+    public virtual Track ChangeTitle(string title)
     {
         Title = title;
         return this;
     }
 
-    public virtual Music ChangeDuration(float durationInMinutes)
+    public virtual Track ChangeLength(float length)
     {
-        DurationInMinutes = durationInMinutes;
+        Length = length;
         return this;
     }
 

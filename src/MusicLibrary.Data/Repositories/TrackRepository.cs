@@ -4,9 +4,9 @@ using MusicLibrary.Data.Context;
 
 namespace MusicLibrary.Data.Repositories;
 
-public class MusicRepository : Repository<Music>, IMusicRepository
+public class TrackRepository : Repository<Track>, ITrackRepository
 {
-    public MusicRepository(MusicLibraryDbContext musicLibraryDbContext) : base(musicLibraryDbContext)
+    public TrackRepository(MusicLibraryDbContext musicLibraryDbContext) : base(musicLibraryDbContext)
     {
     }
 }

@@ -4,50 +4,50 @@ using MusicLibrary.Core.Models;
 
 namespace MusicLibrary.Data.Mappings;
 
-public class MusicMapping : IEntityTypeConfiguration<Music>
+public class TrackMapping : IEntityTypeConfiguration<Track>
 {
-    public void Configure(EntityTypeBuilder<Music> builder)
+    public void Configure(EntityTypeBuilder<Track> builder)
     {
-        builder.ToTable("music");
+        builder.ToTable("track");
 
-        builder.HasKey(music => music.Id);
+        builder.HasKey(track => track.Id);
 
-        builder.Property(music => music.Id)
+        builder.Property(track => track.Id)
             .HasColumnType("UNIQUEIDENTIFIER")
             .HasColumnName("id")
             .IsRequired();
 
-        builder.Property(music => music.ProductionId)
+        builder.Property(track => track.ProductionId)
             .HasColumnType("UNIQUEIDENTIFIER")
             .HasColumnName("production_id")
             .IsRequired();
 
-        builder.Property(music => music.OrdinalPosition)
+        builder.Property(track => track.Position)
             .HasColumnType("TINYINT")
-            .HasColumnName("ordinal_position")
+            .HasColumnName("position")
             .IsRequired();
 
-        builder.Property(music => music.Title)
+        builder.Property(track => track.Title)
             .HasColumnType("VARCHAR(50)")
             .HasColumnName("title")
             .IsRequired();
 
-        builder.Property(music => music.DurationInMinutes)
+        builder.Property(track => track.Length)
             .HasColumnType("TINYINT")
-            .HasColumnName("duration_in_minutes")
+            .HasColumnName("length")
             .IsRequired();
 
-        builder.Property(music => music.CreatedAt)
+        builder.Property(track => track.CreatedAt)
             .HasColumnType("DATETIME2")
             .HasColumnName("created_at")
             .IsRequired();
 
-        builder.Property(music => music.UpdatedAt)
+        builder.Property(track => track.UpdatedAt)
             .HasColumnType("DATETIME2")
             .HasColumnName("updated_at")
             .IsRequired(required: default);
 
-        builder.Property(music => music.IsDisabled)
+        builder.Property(track => track.IsDisabled)
             .HasColumnType("BIT")
             .HasColumnName("is_disabled")
             .IsRequired();

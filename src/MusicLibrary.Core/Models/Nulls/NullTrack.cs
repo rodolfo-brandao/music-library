@@ -2,29 +2,29 @@ using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
-public sealed class NullMusic : Music, INullObject
+public sealed class NullTrack : Track, INullObject
 {
     public override Guid ProductionId => Guid.Empty;
-    public override byte OrdinalPosition => default;
+    public override byte Position => default;
     public override string Title => string.Empty;
-    public override float DurationInMinutes => default;
+    public override float Length => default;
 
-    public override Music ChangeProduction(Guid productionId)
+    public override Track ChangeProduction(Guid productionId)
     {
         return this;
     }
 
-    public override Music ChangeOrdinalPosition(byte ordinalPosition)
+    public override Track ChangePosition(byte position)
     {
         return this;
     }
 
-    public override Music ChangeTitle(string title)
+    public override Track ChangeTitle(string title)
     {
         return this;
     }
 
-    public override Music ChangeDuration(float durationInMinutes)
+    public override Track ChangeLength(float length)
     {
         return this;
     }

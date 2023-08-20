@@ -2,9 +2,9 @@
     {
         "id": "9054C37D-E8F9-4C4E-9A02-839B57B87ADB",
         "productionId": "47E4541D-7530-4387-9723-4A40B3C8AFCF",
-        "ordinalPosition": 1,
+        "position": 1,
         "title": "Da Funk - Radio Edit",
-        "durationInMinutes": 3.49,
+        "length": 3.49,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -12,9 +12,9 @@
     {
         "id": "36CBD79A-CABC-4305-BDBA-4ECA798F28D9",
         "productionId": "47E4541D-7530-4387-9723-4A40B3C8AFCF",
-        "ordinalPosition": 2,
+        "position": 2,
         "title": "Musique",
-        "durationInMinutes": 6.53,
+        "length": 6.53,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -22,9 +22,9 @@
     {
         "id": "D1B657EB-8DCB-4B58-BABA-8E4389B0F7BE",
         "productionId": "47E4541D-7530-4387-9723-4A40B3C8AFCF",
-        "ordinalPosition": 3,
+        "position": 3,
         "title": "Da Funk",
-        "durationInMinutes": 5.34,
+        "length": 5.34,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -32,9 +32,9 @@
     {
         "id": "1BB2DBA9-98D4-441E-9CD4-6118499E2B31",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
-        "ordinalPosition": 1,
+        "position": 1,
         "title": "Fight Fire With Fire",
-        "durationInMinutes": 4.44,
+        "length": 4.44,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -44,7 +44,7 @@
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
         "ordinalPosition": 2,
         "title": "Ride The Lightning",
-        "durationInMinutes": 6.36,
+        "length": 6.36,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -52,9 +52,9 @@
     {
         "id": "A9595279-6607-4F15-B944-BD412A592329",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
-        "ordinalPosition": 3,
+        "position": 3,
         "title": "For Whom The Bell Tolls",
-        "durationInMinutes": 5.09,
+        "length": 5.09,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -62,9 +62,9 @@
     {
         "id": "4B891BC1-CAD7-4B78-8178-7F155BBFF40D",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
-        "ordinalPosition": 4,
+        "position": 4,
         "title": "Fade To Black",
-        "durationInMinutes": 6.57,
+        "length": 6.57,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -72,8 +72,9 @@
     {
         "id": "3292B0DF-E7DD-4704-B8D0-587E3AE42EF3",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
+        "position": 5,
         "title": "Trapped Under Ice",
-        "durationInMinutes": 4.04,
+        "length": 4.04,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -81,9 +82,9 @@
     {
         "id": "49C8B089-0D68-44FE-8EE3-BA0DE40230E8",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
-        "ordinalPosition": 6,
+        "position": 6,
         "title": "Escape",
-        "durationInMinutes": 4.23,
+        "length": 4.23,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -91,9 +92,9 @@
     {
         "id": "C7E416F4-E84D-4696-AB1E-261F550B28F2",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
-        "ordinalPosition": 7,
+        "position": 7,
         "title": "Creeping Death",
-        "durationInMinutes": 6.36,
+        "length": 6.36,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false
@@ -101,9 +102,9 @@
     {
         "id": "2B59716B-FFDE-4212-ADAD-B7F4949DB2EE",
         "productionId": "B2DE8C77-30D2-405E-A3FD-2ACB2E4120EA",
-        "ordinalPosition": 8,
+        "position": 8,
         "title": "The Call Of Ktulu",
-        "durationInMinutes": 8.53,
+        "length": 8.53,
         "createdAt": "01-01-2023 1:01:01",
         "updatedAt": null,
         "isDisabled": false

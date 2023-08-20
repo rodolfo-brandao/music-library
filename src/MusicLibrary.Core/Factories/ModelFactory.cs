@@ -24,36 +24,35 @@ public sealed class ModelFactory : IModelFactory
         IsDisabled = default
     };
 
-    public Music CreateMusic(Guid productionId, byte ordinalPosition, string title, float durationInMinutes) => new()
-    {
-        Id = Guid.NewGuid(),
-        ProductionId = productionId,
-        OrdinalPosition = ordinalPosition,
-        Title = title,
-        DurationInMinutes = durationInMinutes,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = default,
-        IsDisabled = default
-    };
-
     public Production CreateProduction(Guid artistId, string title, ProductionType productionType,
-        ushort releaseYear) => new()
+        string releaseDate) => new()
     {
         Id = Guid.NewGuid(),
         ArtistId = artistId,
         Title = title,
         ProductionType = productionType,
-        ReleaseYear = releaseYear,
+        ReleaseDate = releaseDate,
         CreatedAt = DateTime.UtcNow,
         UpdatedAt = default,
         IsDisabled = default
     };
 
-    public User CreateUser(string username, string email, string password, string passwordSalt, string role) => new()
+    public Track CreateTrack(Guid productionId, byte ordinalPosition, string title, float length) => new()
+    {
+        Id = Guid.NewGuid(),
+        ProductionId = productionId,
+        Position = ordinalPosition,
+        Title = title,
+        Length = length,
+        CreatedAt = DateTime.UtcNow,
+        UpdatedAt = default,
+        IsDisabled = default
+    };
+
+    public User CreateUser(string username, string password, string passwordSalt, string role) => new()
     {
         Id = Guid.NewGuid(),
         Username = username,
-        Email = email,
         Password = password,
         PasswordSalt = passwordSalt,
         Role = role,

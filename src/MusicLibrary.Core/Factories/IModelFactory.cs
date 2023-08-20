@@ -7,7 +7,7 @@ public interface IModelFactory
 {
     Artist CreateArtist(Guid genreId, string name);
     Genre CreateGenre(string name);
-    Music CreateMusic(Guid productionId, byte ordinalPosition, string title, float durationInMinutes);
-    Production CreateProduction(Guid artistId, string title, ProductionType productionType, ushort releaseYear);
-    User CreateUser(string username, string email, string password, string passwordSalt, string role);
+    Production CreateProduction(Guid artistId, string title, ProductionType productionType, string releaseDate);
+    Track CreateTrack(Guid productionId, byte ordinalPosition, string title, float length);
+    User CreateUser(string username, string password, string passwordSalt, string role);
 }
