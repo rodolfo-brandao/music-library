@@ -3,7 +3,7 @@ namespace MusicLibrary.Application.Utils;
 /// <summary>
 /// Provides a set of common validation messages for when a validation rule fails.
 /// </summary>
-public static class ValidationFailureMessages
+internal static class ValidationFailureMessages
 {
     /// <summary>
     /// Provides a validation message for when a certain record property is empty.
