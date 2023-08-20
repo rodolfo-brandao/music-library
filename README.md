@@ -18,7 +18,7 @@ Before you start, keep in mind that this project was built using **.NET 7 Standa
 ### Application
 1. Clone the repository:
 ```bash
-$ git clone https://github.com/rodolfo-brandao/music-library
+git clone https://github.com/rodolfo-brandao/music-library
 ```
 
 2. Navigate to the `/src` directory:
@@ -30,7 +30,7 @@ Now, through the [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/
 
 3. Restore, build and test the application:
 ```bash
-$ dotnet restore \
+dotnet restore \
 && dotnet build --no-restore \
 && dotnet test --no-build --verbosity normal
 ```
@@ -47,12 +47,12 @@ To do so, simply:
 
 1. Install it through the `dotnet` CLI:
 ```bash
-$ dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-ef
 ```
 
 2. Then update:
 ```bash
-$ dotnet tool update --global dotnet-ef
+dotnet tool update --global dotnet-ef
 ```
 
 #### Migrations
@@ -60,19 +60,19 @@ Now let's apply the pre-defined migrations in the `MusicLibrary.Data` layer
 
 1. Inside the `/src/MusicLibrary.Data` directory, create a folder called "SQLite":
 ```bash
-$ mkdir SQLite
+mkdir SQLite
 ```
 
 2. Now, in the `/src` directory, create the `.db` file mentioned previously:
 ```bash
-$ dotnet ef database update --project MusicLibrary.Data --startup-project MusicLibrary.Presentation
+dotnet ef database update --project MusicLibrary.Data --startup-project MusicLibrary.Presentation
 ```
 
 ---
 
 After following all the steps, we can now run our project locally:
 ```bash
-$ dotnet run --project MusicLibrary.Presentation/MusicLibrary.Presentation.csproj
+dotnet run --project MusicLibrary.Presentation/MusicLibrary.Presentation.csproj
 ```
 
 With this, the application's Swagger will be available via HTTPS at `localhost:7233` ([here](https://localhost:7233/swagger/index.html)).
