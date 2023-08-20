@@ -27,25 +27,6 @@ namespace MusicLibrary.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
-                    username = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    email = table.Column<string>(type: "VARCHAR(255)", nullable: false),
-                    password = table.Column<string>(type: "CHAR(32)", nullable: false),
-                    password_salt = table.Column<string>(type: "CHAR(16)", nullable: false),
-                    role = table.Column<string>(type: "VARCHAR(5)", nullable: false),
-                    created_at = table.Column<DateTime>(type: "DATETIME2", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "DATETIME2", nullable: true),
-                    is_disabled = table.Column<bool>(type: "BIT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_user", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "artist",
                 columns: table => new
                 {
@@ -75,7 +56,7 @@ namespace MusicLibrary.Data.Migrations
                     artist_id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
                     title = table.Column<string>(type: "VARCHAR(50)", nullable: false),
                     production_type = table.Column<byte>(type: "TINYINT", nullable: false),
-                    release_year = table.Column<ushort>(type: "TINYINT", nullable: false),
+                    release_year = table.Column<string>(type: "TINYINT", nullable: false),
                     created_at = table.Column<DateTime>(type: "DATETIME2", nullable: false),
                     updated_at = table.Column<DateTime>(type: "DATETIME2", nullable: true),
                     is_disabled = table.Column<bool>(type: "BIT", nullable: false)
@@ -92,23 +73,23 @@ namespace MusicLibrary.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "music",
+                name: "track",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
                     production_id = table.Column<Guid>(type: "UNIQUEIDENTIFIER", nullable: false),
-                    ordinal_position = table.Column<byte>(type: "TINYINT", nullable: false),
+                    position = table.Column<byte>(type: "TINYINT", nullable: false),
                     title = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    duration_in_minutes = table.Column<float>(type: "TINYINT", nullable: false),
+                    length = table.Column<float>(type: "TINYINT", nullable: false),
                     created_at = table.Column<DateTime>(type: "DATETIME2", nullable: false),
                     updated_at = table.Column<DateTime>(type: "DATETIME2", nullable: true),
                     is_disabled = table.Column<bool>(type: "BIT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_music", x => x.id);
+                    table.PrimaryKey("PK_track", x => x.id);
                     table.ForeignKey(
-                        name: "FK_music_production_production_id",
+                        name: "FK_track_production_production_id",
                         column: x => x.production_id,
                         principalTable: "production",
                         principalColumn: "id",
@@ -121,24 +102,21 @@ namespace MusicLibrary.Data.Migrations
                 column: "genre_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_music_production_id",
-                table: "music",
-                column: "production_id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_production_artist_id",
                 table: "production",
                 column: "artist_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_track_production_id",
+                table: "track",
+                column: "production_id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "music");
-
-            migrationBuilder.DropTable(
-                name: "user");
+                name: "track");
 
             migrationBuilder.DropTable(
                 name: "production");

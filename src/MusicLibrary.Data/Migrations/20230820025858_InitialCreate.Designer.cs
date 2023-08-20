@@ -11,7 +11,7 @@ using MusicLibrary.Data.Context;
 namespace MusicLibrary.Data.Migrations
 {
     [DbContext(typeof(MusicLibraryDbContext))]
-    [Migration("20230422064847_InitialCreate")]
+    [Migration("20230820025858_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -84,49 +84,6 @@ namespace MusicLibrary.Data.Migrations
                     b.ToTable("genre", (string)null);
                 });
 
-            modelBuilder.Entity("MusicLibrary.Core.Models.Music", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("UNIQUEIDENTIFIER")
-                        .HasColumnName("id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("DATETIME2")
-                        .HasColumnName("created_at");
-
-                    b.Property<float>("DurationInMinutes")
-                        .HasColumnType("TINYINT")
-                        .HasColumnName("duration_in_minutes");
-
-                    b.Property<bool>("IsDisabled")
-                        .HasColumnType("BIT")
-                        .HasColumnName("is_disabled");
-
-                    b.Property<byte>("OrdinalPosition")
-                        .HasColumnType("TINYINT")
-                        .HasColumnName("ordinal_position");
-
-                    b.Property<Guid>("ProductionId")
-                        .HasColumnType("UNIQUEIDENTIFIER")
-                        .HasColumnName("production_id");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(50)")
-                        .HasColumnName("title");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("DATETIME2")
-                        .HasColumnName("updated_at");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductionId");
-
-                    b.ToTable("music", (string)null);
-                });
-
             modelBuilder.Entity("MusicLibrary.Core.Models.Production", b =>
                 {
                     b.Property<Guid>("Id")
@@ -150,7 +107,8 @@ namespace MusicLibrary.Data.Migrations
                         .HasColumnType("TINYINT")
                         .HasColumnName("production_type");
 
-                    b.Property<ushort>("ReleaseYear")
+                    b.Property<string>("ReleaseDate")
+                        .IsRequired()
                         .HasColumnType("TINYINT")
                         .HasColumnName("release_year");
 
@@ -170,7 +128,7 @@ namespace MusicLibrary.Data.Migrations
                     b.ToTable("production", (string)null);
                 });
 
-            modelBuilder.Entity("MusicLibrary.Core.Models.User", b =>
+            modelBuilder.Entity("MusicLibrary.Core.Models.Track", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,42 +139,36 @@ namespace MusicLibrary.Data.Migrations
                         .HasColumnType("DATETIME2")
                         .HasColumnName("created_at");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(255)")
-                        .HasColumnName("email");
-
                     b.Property<bool>("IsDisabled")
                         .HasColumnType("BIT")
                         .HasColumnName("is_disabled");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("CHAR(32)")
-                        .HasColumnName("password");
+                    b.Property<float>("Length")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("length");
 
-                    b.Property<string>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("CHAR(16)")
-                        .HasColumnName("password_salt");
+                    b.Property<byte>("Position")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("position");
 
-                    b.Property<string>("Role")
+                    b.Property<Guid>("ProductionId")
+                        .HasColumnType("UNIQUEIDENTIFIER")
+                        .HasColumnName("production_id");
+
+                    b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(5)")
-                        .HasColumnName("role");
+                        .HasColumnType("VARCHAR(50)")
+                        .HasColumnName("title");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("DATETIME2")
                         .HasColumnName("updated_at");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(50)")
-                        .HasColumnName("username");
-
                     b.HasKey("Id");
 
-                    b.ToTable("user", (string)null);
+                    b.HasIndex("ProductionId");
+
+                    b.ToTable("track", (string)null);
                 });
 
             modelBuilder.Entity("MusicLibrary.Core.Models.Artist", b =>
@@ -230,17 +182,6 @@ namespace MusicLibrary.Data.Migrations
                     b.Navigation("Genre");
                 });
 
-            modelBuilder.Entity("MusicLibrary.Core.Models.Music", b =>
-                {
-                    b.HasOne("MusicLibrary.Core.Models.Production", "Production")
-                        .WithMany("Musics")
-                        .HasForeignKey("ProductionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Production");
-                });
-
             modelBuilder.Entity("MusicLibrary.Core.Models.Production", b =>
                 {
                     b.HasOne("MusicLibrary.Core.Models.Artist", "Artist")
@@ -250,6 +191,17 @@ namespace MusicLibrary.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("MusicLibrary.Core.Models.Track", b =>
+                {
+                    b.HasOne("MusicLibrary.Core.Models.Production", "Production")
+                        .WithMany("Tracks")
+                        .HasForeignKey("ProductionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Production");
                 });
 
             modelBuilder.Entity("MusicLibrary.Core.Models.Artist", b =>
@@ -264,7 +216,7 @@ namespace MusicLibrary.Data.Migrations
 
             modelBuilder.Entity("MusicLibrary.Core.Models.Production", b =>
                 {
-                    b.Navigation("Musics");
+                    b.Navigation("Tracks");
                 });
 #pragma warning restore 612, 618
         }
