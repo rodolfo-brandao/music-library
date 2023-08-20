@@ -14,7 +14,6 @@ namespace MusicLibrary.Tests.Setup.Fakers.Models
         public static User Valid(string username = default) => new Faker<User>()
             .RuleFor(user => user.Id, _ => Guid.NewGuid())
             .RuleFor(user => user.Username, faker => username ?? faker.Internet.UserName())
-            .RuleFor(user => user.Email, faker => faker.Internet.Email())
             .RuleFor(user => user.Password, faker => faker.Hashids.Encode())
             .RuleFor(user => user.PasswordSalt, faker => faker.Hashids.Encode())
             .RuleFor(user => user.Role, faker => faker.PickRandom(Roles))
