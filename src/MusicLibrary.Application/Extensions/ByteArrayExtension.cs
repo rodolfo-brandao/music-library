@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace MusicLibrary.Application.Extensions;
 
+[ExcludeFromCodeCoverage]
 internal static class ByteArrayExtension
 {
     public static string ParseToString(this byte[] bytes, string format = default)
