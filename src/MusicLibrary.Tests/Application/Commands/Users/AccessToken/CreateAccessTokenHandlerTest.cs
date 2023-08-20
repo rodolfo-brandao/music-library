@@ -29,7 +29,7 @@ public class CreateAccessTokenHandlerTest
 
         var userRepository = UserRepositoryMockBuilder
             .Create()
-            .SetupGetByUsernameAsync(userModelToBeReturned: user)
+            .SetupGetByKeyAsync(userModelToBeReturned: user)
             .Build();
 
         var securityService = SecurityServiceMockBuilder
@@ -59,7 +59,7 @@ public class CreateAccessTokenHandlerTest
 
         var userRepository = UserRepositoryMockBuilder
             .Create()
-            .SetupGetByUsernameAsync(userModelToBeReturned: user)
+            .SetupGetByKeyAsync(userModelToBeReturned: user)
             .Build();
 
         var securityService = SecurityServiceMockBuilder
