@@ -7,22 +7,36 @@ using Microsoft.IdentityModel.Tokens;
 using MusicLibrary.Application.Extensions;
 using MusicLibrary.Core.Contracts.Services;
 using MusicLibrary.Core.Models;
+using MusicLibrary.Core.Models.Nulls;
+using MusicLibrary.Data.ContractResolvers;
+using Newtonsoft.Json;
+using StackExchange.Redis;
+using IRedisDatabase = StackExchange.Redis.IDatabase;
 
 namespace MusicLibrary.Application.Services;
 
 public class SecurityService : ISecurityService
 {
     private readonly IConfiguration _configuration;
+    private readonly IRedisDatabase _redisDatabase;
 
-    public SecurityService(IConfiguration configuration)
+    public SecurityService(IConfiguration configuration, IConnectionMultiplexer connectionMultiplexer)
     {
         _configuration = configuration;
+        _redisDatabase = connectionMultiplexer.GetDatabase();
     }
 
     public (string PasswordHash, string PasswordSalt) CreatePasswordHash(string rawPassword)
     {
         var salt = CreateSalt();
         return (CreateHash(rawPassword, salt), salt);
+    }
+
+    public async Task<bool> CreateUserAsync(User user)
+    {
+        var redisKey = new RedisKey(user.Username);
+        var redisValue = new RedisValue(JsonConvert.SerializeObject(user));
+        return await _redisDatabase.StringSetAsync(redisKey, redisValue);
     }
 
     public string CreateUserAccessToken(User user)
@@ -33,14 +47,14 @@ public class SecurityService : ISecurityService
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Id.ToString()),
-            new Claim(ClaimTypes.Role, user.Role)
+            new(ClaimTypes.Name, user.Id.ToString()),
+            new(ClaimTypes.Role, user.Role)
         };
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddHours(2),
+            Expires = DateTime.UtcNow.AddHours(1),
             SigningCredentials = signInCredentials
         };
 
@@ -48,6 +62,20 @@ public class SecurityService : ISecurityService
         var securityToken = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(securityToken);
     }
+
+    public async Task<User> GetUserAsync(string username)
+    {
+        var record = (await _redisDatabase.StringGetAsync(new RedisKey(username))).ToString();
+        return !string.IsNullOrWhiteSpace(record)
+            ? JsonConvert.DeserializeObject<User>(record, new JsonSerializerSettings
+            {
+                ContractResolver = new NonPublicPropertiesContractResolver()
+            })
+            : new NullUser();
+    }
+
+    public async Task<bool> RemoveUserAsync(string username)
+        => await _redisDatabase.KeyDeleteAsync(new RedisKey(username));
 
     public bool ValidatePassword(string rawPassword, string passwordHash, string passwordSalt) =>
         CreateHash(rawPassword, passwordSalt).Equals(passwordHash);

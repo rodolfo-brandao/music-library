@@ -27,18 +27,14 @@ public class CreateAccessTokenHandlerTest
         var command = CreateAccessTokenCommandFake.Valid;
         var user = UserModelFake.Valid(username: command.Username);
 
-        var userRepository = UserRepositoryMockBuilder
-            .Create()
-            .SetupGetByKeyAsync(userModelToBeReturned: user)
-            .Build();
-
         var securityService = SecurityServiceMockBuilder
             .Create()
-            .SetupValidatePassword(passwordIsValid: true)
             .SetupCreateUserAccessToken()
+            .SetupGetUserAsync(userModelToBeReturned: user)
+            .SetupValidatePassword(passwordIsValid: true)
             .Build();
 
-        var handler = new CreateAccessTokenHandler(userRepository, securityService, _logger);
+        var handler = new CreateAccessTokenHandler(securityService, _logger);
 
         // Act:
         var sut = await handler.Handle(command, cancellationToken: default);
@@ -57,18 +53,14 @@ public class CreateAccessTokenHandlerTest
         // Arrange:
         var user = UserModelFake.Valid(username: command.Username);
 
-        var userRepository = UserRepositoryMockBuilder
-            .Create()
-            .SetupGetByKeyAsync(userModelToBeReturned: user)
-            .Build();
-
         var securityService = SecurityServiceMockBuilder
             .Create()
-            .SetupValidatePassword(passwordIsValid: true)
             .SetupCreateUserAccessToken()
+            .SetupGetUserAsync(userModelToBeReturned: user)
+            .SetupValidatePassword(passwordIsValid: true)
             .Build();
 
-        var handler = new CreateAccessTokenHandler(userRepository, securityService, _logger);
+        var handler = new CreateAccessTokenHandler(securityService, _logger);
 
         // Act:
         var sut = await handler.Handle(command, cancellationToken: default);

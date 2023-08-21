@@ -1,23 +1,21 @@
 [
     {
         "id": "FCBB877E-334B-45DA-9572-7D3ADB619770",
-        "username": "adminuser",
-        "email": "adminuser@email.com",
+        "username": "foobar",
         "password": "83a6c7696be667964f0f42ac17f7fe93",
         "passwordSalt": "c0695027b298c139700d002f",
         "role": "admin",
-        "createdAt": "01-01-2023 1:01:01",
+        "createdAt": "01-01-2023 0:00:00",
         "updatedAt": null,
         "isDisabled": false
     },
     {
         "id": "E151CCD2-0C3E-43F3-B767-5D5F8B292A19",
-        "username": "commonuser",
-        "email": "commonuser@email.com",
+        "username": "barfoo",
         "password": "83a6c7696be667964f0f42ac17f7fe93",
         "passwordSalt": "c0695027b298c139700d002f",
         "role": "user",
-        "createdAt": "01-01-2023 1:01:01",
+        "createdAt": "01-01-2023 0:00:00",
         "updatedAt": null,
         "isDisabled": false
     }

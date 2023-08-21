@@ -1,5 +1,6 @@
 using MusicLibrary.Core.Contracts.Services;
 using MusicLibrary.Core.Models;
+using MusicLibrary.Core.Models.Nulls;
 
 namespace MusicLibrary.Tests.Setup.Builders.Services
 {
@@ -18,13 +19,23 @@ namespace MusicLibrary.Tests.Setup.Builders.Services
 
         public SecurityServiceMockBuilder SetupCreateUserAccessToken()
         {
-            _mock.Setup(securityService => securityService.CreateUserAccessToken(It.IsAny<User>())).Returns(string.Empty);
+            _mock.Setup(securityService => securityService.CreateUserAccessToken(It.IsAny<User>()))
+                .Returns(string.Empty);
+            return this;
+        }
+
+        public SecurityServiceMockBuilder SetupGetUserAsync(User userModelToBeReturned = default)
+        {
+            _mock.Setup(securityService => securityService.GetUserAsync(It.IsAny<string>()))
+                .ReturnsAsync(userModelToBeReturned ?? new NullUser());
             return this;
         }
 
         public SecurityServiceMockBuilder SetupValidatePassword(bool passwordIsValid = default)
         {
-            _mock.Setup(securityService => securityService.ValidatePassword(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(passwordIsValid);
+            _mock.Setup(securityService =>
+                    securityService.ValidatePassword(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(passwordIsValid);
             return this;
         }
     }
