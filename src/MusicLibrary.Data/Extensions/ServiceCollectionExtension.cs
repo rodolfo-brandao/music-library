@@ -46,9 +46,8 @@ public static class ServiceCollectionExtension
             .AddScoped(typeof(IRepository<>), typeof(Repository<>))
             .AddScoped<IArtistRepository, ArtistRepository>()
             .AddScoped<IGenreRepository, GenreRepository>()
-            .AddScoped<ITrackRepository, TrackRepository>()
             .AddScoped<IProductionRepository, ProductionRepository>()
-            .AddScoped<IUserRepository, UserRepository>();
+            .AddScoped<ITrackRepository, TrackRepository>();
     }
 
     public static IServiceCollection AddCustomUnitsOfWork(this IServiceCollection serviceCollection)

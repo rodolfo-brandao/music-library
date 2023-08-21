@@ -11,39 +11,31 @@ namespace MusicLibrary.Presentation.Extensions;
 
 internal static class ServiceCollectionExtension
 {
-    private const string ApiVersioningFormat = "'v'VVV";
-    private const string BearerTokenFormat = "JWT";
-    private const string CurrentApiVersion = "v1";
-    private const ushort MajorApiVersion = 1;
-    private const ushort MinorApiVersion = default;
-
-    #region Public methods
-
     public static IServiceCollection AddCustomApiVersioning(this IServiceCollection serviceCollection)
     {
         return serviceCollection.AddApiVersioning(options =>
         {
-            options.DefaultApiVersion = new ApiVersion(MajorApiVersion, MinorApiVersion);
+            options.DefaultApiVersion = new ApiVersion(majorVersion: 1, minorVersion: ushort.MinValue);
             options.ReportApiVersions = true;
             options.AssumeDefaultVersionWhenUnspecified = true;
         }).AddVersionedApiExplorer(options =>
         {
-            options.GroupNameFormat = ApiVersioningFormat;
+            options.GroupNameFormat = "'v'VVV";
             options.SubstituteApiVersionInUrl = true;
         });
     }
 
-    public static IServiceCollection AddCustomAuthorizationPolicy(this IServiceCollection serviceCollection, IConfiguration configuration)
+    public static IServiceCollection AddCustomAuthorizationPolicy(this IServiceCollection serviceCollection,
+        IConfiguration configuration)
     {
         var jwtSecret = configuration.GetSection("Jwt:Secret").Value;
         var jwtSecretBytes = Encoding.ASCII.GetBytes(jwtSecret ?? string.Empty);
-        const string adminAuthorizationRole = AuthorizationRoles.Admin;
-        const string userAuthorizationRole = AuthorizationRoles.User;
 
         _ = serviceCollection.AddAuthorization(options =>
         {
-            options.AddPolicy(adminAuthorizationRole, policy => policy.RequireClaim("User", adminAuthorizationRole));
-            options.AddPolicy(userAuthorizationRole, policy => policy.RequireClaim("User", userAuthorizationRole));
+            options.AddPolicy(AuthorizationRoles.Admin,
+                policy => policy.RequireClaim("User", AuthorizationRoles.Admin));
+            options.AddPolicy(AuthorizationRoles.User, policy => policy.RequireClaim("User", AuthorizationRoles.User));
         }).AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -51,7 +43,7 @@ internal static class ServiceCollectionExtension
         }).AddJwtBearer(options =>
         {
             options.RequireHttpsMetadata = default;
-            options.SaveToken = true;
+            options.SaveToken = default;
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
@@ -65,18 +57,19 @@ internal static class ServiceCollectionExtension
     }
 
     public static IServiceCollection AddCustomRouting(this IServiceCollection serviceCollection)
-    {
-        return serviceCollection.AddRouting(routeOptions =>
-        {
-            routeOptions.LowercaseUrls = true;
-        });
-    }
+        => serviceCollection.AddRouting(routeOptions => { routeOptions.LowercaseUrls = true; });
 
-    public static IServiceCollection AddCustomSerilog(this IServiceCollection serviceCollection, ConfigureHostBuilder configureHostBuilder)
+    public static IServiceCollection AddCustomSerilog(this IServiceCollection serviceCollection,
+        ConfigureHostBuilder configureHostBuilder)
     {
-        var configurationBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json").Build();
-        Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configurationBuilder).CreateLogger();
-        Log.Debug("Starting application...");
+        var configurationBuilder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.Development.json")
+            .Build();
+
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configurationBuilder)
+            .CreateLogger();
+
         configureHostBuilder.UseSerilog();
         return serviceCollection.AddSingleton(Log.Logger);
     }
@@ -84,18 +77,20 @@ internal static class ServiceCollectionExtension
     public static IServiceCollection AddCustomSwagger(this IServiceCollection serviceCollection,
         IConfiguration configuration)
     {
+        const string bearerTokenFormat = "JWT";
         return serviceCollection.AddSwaggerGen(options =>
         {
             var openApiInfo = GetOpenApiInfo(configuration);
-
             options.SwaggerDoc("v1", openApiInfo);
             options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
             {
-                Description = $"{BearerTokenFormat} authorization header using {JwtBearerDefaults.AuthenticationScheme} scheme. \r\n\r\nTo authenticate, simply enter '{JwtBearerDefaults.AuthenticationScheme} <your_access_token>'",
+                Description =
+                    $"{bearerTokenFormat} authorization header using {JwtBearerDefaults.AuthenticationScheme} scheme." +
+                    $"\r\n\r\nTo authenticate, simply enter '{JwtBearerDefaults.AuthenticationScheme} <your_access_token>'",
                 Name = "Authorization",
                 In = ParameterLocation.Header,
                 Scheme = JwtBearerDefaults.AuthenticationScheme,
-                BearerFormat = BearerTokenFormat,
+                BearerFormat = bearerTokenFormat,
                 Type = SecuritySchemeType.ApiKey
             });
 
@@ -120,13 +115,11 @@ internal static class ServiceCollectionExtension
         });
     }
 
-    #endregion
-
     #region Private methods
 
     private static OpenApiInfo GetOpenApiInfo(IConfiguration configuration) => new()
     {
-        Version = CurrentApiVersion,
+        Version = "v1",
         Title = configuration.GetSection("OpenApiInfo:Title").Value,
         Description = configuration.GetSection("OpenApiInfo:Description").Value,
         Contact = new OpenApiContact

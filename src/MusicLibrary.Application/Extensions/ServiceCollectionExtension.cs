@@ -10,15 +10,9 @@ namespace MusicLibrary.Application.Extensions;
 public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddCustomMediatR(this IServiceCollection serviceCollection)
-    {
-        return serviceCollection.AddMediatR(config =>
-        {
-            config.RegisterServicesFromAssembly(typeof(ListArtistsHandler).Assembly);
-        });
-    }
+        => serviceCollection.AddMediatR(config =>
+            config.RegisterServicesFromAssembly(typeof(ListArtistsHandler).Assembly));
 
     public static IServiceCollection AddCustomServices(this IServiceCollection serviceCollection)
-    {
-        return serviceCollection.AddScoped<ISecurityService, SecurityService>();
-    }
+        => serviceCollection.AddScoped<ISecurityService, SecurityService>();
 }
