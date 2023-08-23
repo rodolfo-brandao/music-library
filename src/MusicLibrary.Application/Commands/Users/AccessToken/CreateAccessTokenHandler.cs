@@ -39,11 +39,12 @@ public class CreateAccessTokenHandler : IRequestHandler<CreateAccessTokenCommand
         }
         else
         {
+            const ushort oneHourInSeconds = 3600;
             apiResult.Response = new CreatedAccessTokenResponse
             {
                 AccessToken = _securityService.CreateUserAccessToken(user),
                 TokenType = "Bearer",
-                ExpiresIn = 3600
+                ExpiresIn = oneHourInSeconds
             };
 
             _logger.Debug("Access token created successfully for user: {Username}", request.Username);
