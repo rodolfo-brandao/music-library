@@ -2,7 +2,6 @@ using System.Collections;
 using MusicLibrary.Application.Commands.Users.AccessToken;
 using MusicLibrary.Application.Responses.Users;
 using MusicLibrary.Application.Utils;
-using MusicLibrary.Tests.Setup.Builders.Repositories;
 using MusicLibrary.Tests.Setup.Builders.Services;
 using MusicLibrary.Tests.Setup.Fakers.Commands.Users.AccessToken;
 using MusicLibrary.Tests.Setup.Fakers.Models;
@@ -20,7 +19,7 @@ public class CreateAccessTokenHandlerTest
         _logger = new Mock<ILogger>().Object;
     }
 
-    [Fact(DisplayName = "Handle() - Success Case")]
+    [Fact(DisplayName = "[async] Handle() - Success Case")]
     public async Task Handle_PassValidCommandObject_HandlerShouldCreateAccessToken()
     {
         // Arrange:
@@ -45,7 +44,7 @@ public class CreateAccessTokenHandlerTest
         sut.ErrorMessage.Should().BeNull();
     }
 
-    [Theory(DisplayName = "Handle() - Failure Cases (3): command object with null properties")]
+    [Theory(DisplayName = "[async] Handle() - Failure Cases (3): command object with null properties")]
     [ClassData(typeof(CreateAccessTokenInvalidCommands))]
     public async Task Handle_PassInvalidCommandObject_HandlerShouldNotCreateAccessToken(
         CreateAccessTokenCommand command)

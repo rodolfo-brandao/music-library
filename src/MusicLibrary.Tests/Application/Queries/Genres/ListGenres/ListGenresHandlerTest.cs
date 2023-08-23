@@ -9,7 +9,7 @@ namespace MusicLibrary.Tests.Application.Queries.Genres.ListGenres;
 [Trait("Handler", "ListGenres")]
 public class ListGenresHandlerTest
 {
-    [Fact(DisplayName = "Handle() - Success Case")]
+    [Fact(DisplayName = "[async] Handle() - Success Case")]
     public async Task Handle_PassValidQueryObject_HandlerShouldListGenres()
     {
         // Arrange:
@@ -39,7 +39,7 @@ public class ListGenresHandlerTest
         sut.ErrorMessage.Should().BeNull();
     }
 
-    [Fact(DisplayName = "Handle() - Failure Case: query object with invalid 'OrderBy' param value")]
+    [Fact(DisplayName = "[async] Handle() - Failure Case: query object with invalid 'OrderBy' param value")]
     public async Task Handle_PassInvalidQueryObject_HandlerShouldNotListArtists()
     {
         // Arrange:

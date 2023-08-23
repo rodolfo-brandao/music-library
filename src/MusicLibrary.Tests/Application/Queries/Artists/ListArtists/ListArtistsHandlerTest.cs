@@ -9,7 +9,7 @@ namespace MusicLibrary.Tests.Application.Queries.Artists.ListArtists;
 [Trait("Handler", "ListArtists")]
 public class ListArtistsHandlerTest
 {
-    [Fact(DisplayName = "Handle() - Success Case")]
+    [Fact(DisplayName = "[async] Handle() - Success Case")]
     public async Task Handle_PassValidQueryObject_HandlerShouldListArtists()
     {
         // Arrange:
@@ -39,7 +39,7 @@ public class ListArtistsHandlerTest
         sut.ErrorMessage.Should().BeNull();
     }
 
-    [Fact(DisplayName = "Handle() - Failure Case: query object with invalid 'OrderBy' param value")]
+    [Fact(DisplayName = "[async] Handle() - Failure Case: query object with invalid 'OrderBy' param value")]
     public async Task Handle_PassInvalidQueryObject_HandlerShouldNotListArtists()
     {
         // Arrange:
