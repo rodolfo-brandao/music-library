@@ -1,7 +1,3 @@
-
-
-
-
 # Music Library
 
 ![Workflow: .NET](https://github.com/rodolfo-brandao/music-library/actions/workflows/dotnet-ci.yml/badge.svg)
@@ -64,7 +60,7 @@ Now let's apply the pre-defined migrations in the `MusicLibrary.Data` layer
 mkdir SQLite
 ```
 
-2. Now, in the `/src` directory, create the `.db` file mentioned previously:
+2. Now we go back to the `/src` directory and create the `.db` file mentioned previously:
 ```bash
 dotnet ef database update \
 --project MusicLibrary.Data \
@@ -99,9 +95,13 @@ With this, the application's Swagger will be available via HTTPS at `localhost:7
 - [x] SQLite
 - [x] xUnit
 
+## Architecture
+
+<img src="assets/api-architecture.png" alt="API Architecture" witdh="500" />
+
 ## Data Model
 
-<img src="assets/data-model.png" witdh="500" />
+<img src="assets/data-model.png" alt="Relational Data Model" witdh="500" />
 
 ## Disclaimers
 Although not recommended, the configuration file `appsettings.development.json`, located in the *Presentation* layer, was kept in the repository only to illustrate the idea of a portfolio project, where the concept of this project does not represent any usability in the real world. Besides the fact that no sensitive or relevant information is exposed.
