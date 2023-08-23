@@ -9,7 +9,7 @@ using MusicLibrary.Presentation.Controllers.Abstract;
 namespace MusicLibrary.Presentation.Controllers;
 
 /// <summary>
-/// API Controller to handle requests related to Artists.
+/// API Controller to handle requests related to music genres.
 /// </summary>
 [ApiController, ApiVersion("1"), Produces(ContentTypes.Json)]
 [Authorize(Roles = AuthorizationRoles.AdminUser)]
@@ -36,7 +36,5 @@ public class GenresController : ResponseHandlerController
     [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(DefaultGenreResponse[]))]
     public async Task<IActionResult> ListGenresAsync([FromQuery] ListGenreQuery query,
         CancellationToken cancellationToken = default)
-    {
-        return BuildResponse(await _mediator.Send(query, cancellationToken));
-    }
+        => BuildResponse(await _mediator.Send(query, cancellationToken));
 }
