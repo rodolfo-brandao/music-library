@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Core.Models;
 using MusicLibrary.Data.Extensions;
 
-namespace MusicLibrary.Data.Context;
+namespace MusicLibrary.Data.DbContexts;
 
 public sealed class MusicLibraryDbContext : DbContext
 {
