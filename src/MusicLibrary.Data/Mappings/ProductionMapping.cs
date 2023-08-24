@@ -27,9 +27,9 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
             .HasColumnName("title")
             .IsRequired();
 
-        builder.Property(production => production.ProductionType)
+        builder.Property(production => production.Category)
             .HasColumnType("TINYINT")
-            .HasColumnName("production_type")
+            .HasColumnName("category")
             .IsRequired();
 
         builder.Property(production => production.ReleaseDate)

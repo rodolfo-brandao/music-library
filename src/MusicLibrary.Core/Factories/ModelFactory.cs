@@ -24,24 +24,24 @@ public sealed class ModelFactory : IModelFactory
         IsDisabled = default
     };
 
-    public Production CreateProduction(Guid artistId, string title, ProductionType productionType,
+    public Production CreateProduction(Guid artistId, string title, Category category,
         string releaseDate) => new()
     {
         Id = Guid.NewGuid(),
         ArtistId = artistId,
         Title = title,
-        ProductionType = productionType,
+        Category = category,
         ReleaseDate = releaseDate,
         CreatedAt = DateTime.UtcNow,
         UpdatedAt = default,
         IsDisabled = default
     };
 
-    public Track CreateTrack(Guid productionId, byte ordinalPosition, string title, float length) => new()
+    public Track CreateTrack(Guid productionId, byte position, string title, float length) => new()
     {
         Id = Guid.NewGuid(),
         ProductionId = productionId,
-        Position = ordinalPosition,
+        Position = position,
         Title = title,
         Length = length,
         CreatedAt = DateTime.UtcNow,

@@ -7,7 +7,7 @@ public class Production : TrackableEntity
 {
     public virtual Guid ArtistId { get; protected internal set; }
     public virtual string Title { get; protected internal set; }
-    public virtual ProductionType ProductionType { get; protected internal set; }
+    public virtual Category Category { get; protected internal set; }
     public virtual string ReleaseDate { get; protected internal set; }
 
     #region Navigaton properties
@@ -23,9 +23,9 @@ public class Production : TrackableEntity
         return this;
     }
 
-    public virtual Production ChangeProductionType(ProductionType productionType)
+    public virtual Production ChangeCategory(Category category)
     {
-        ProductionType = productionType;
+        Category = category;
         return this;
     }
 
