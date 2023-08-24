@@ -16,6 +16,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: .NET - Cache packages
+      id: cache-dotnet-coverlet
+      uses: actions/cache@v3
+      with:
+        path: ~\dotnet\cache
+        key: ${{ runner.os }}-dotnet
+        restore-keys: ${{ runner.os }}-dotnet
+
     - name: SonarCloud - Cache packages
       id: cache-sonar-scanner
       uses: actions/cache@v3
@@ -32,13 +40,26 @@ jobs:
         mkdir -p ./.sonar/scanner
         dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
 
+    - name: .NET - Install coverlet
+      working-directory: ./src
+      if: steps.cache-dotnet-coverlet.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        mkdir -p ./.dotnet/coverlet
+        dotnet tool update coverlet.console --tool-path ./.dotnet/coverlet
+
     - name: SonarCloud - Begin analysis
       working-directory: ./src
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: bash
       run: |
-        ./.sonar/scanner/dotnet-sonarscanner begin /k:"rodolfo-brandao_music-library" /o:"rodolfo-brandao" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        ./.sonar/scanner/dotnet-sonarscanner begin \
+        /k:"rodolfo-brandao_music-library" \
+        /o:"rodolfo-brandao" \
+        /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+        /d:sonar.host.url="https://sonarcloud.io" \
+        /d:sonar.cs.opencover.reportsPaths=MusicLibrary.Tests/CoverageResults/coverage.xml
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -53,9 +74,18 @@ jobs:
       working-directory: ./src
       run: dotnet build --no-restore
 
-    - name: .NET - Test
+    - name: .NET - Test and collect code coverage
       working-directory: ./src
-      run: dotnet test --no-build --verbosity normal
+      run: |
+        ./.dotnet/coverlet/coverlet \
+        MusicLibrary.Tests/bin/Debug/net7.0/MusicLibrary.Tests.dll \
+        --target "dotnet" \
+        --targetargs "test --no-build" \
+        --exclude "[*]MusicLibrary.Presentation*" \
+        --exclude "[*]MusicLibrary.Data*" \
+        --exclude "[*]MusicLibrary.Core*" \
+        -f=opencover \
+        -o="MusicLibrary.Tests/CoverageResults/coverage.xml"
 
     - name: SonarCloud - End analysis
       working-directory: ./src
@@ -63,4 +93,5 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: bash
       run: |
-        ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        ./.sonar/scanner/dotnet-sonarscanner end \
+        /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
