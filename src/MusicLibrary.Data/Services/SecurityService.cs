@@ -4,16 +4,16 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using MusicLibrary.Application.Extensions;
 using MusicLibrary.Core.Contracts.Services;
 using MusicLibrary.Core.Models;
 using MusicLibrary.Core.Models.Nulls;
 using MusicLibrary.Data.ContractResolvers;
+using MusicLibrary.Data.Extensions;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using IRedisDatabase = StackExchange.Redis.IDatabase;
 
-namespace MusicLibrary.Application.Services;
+namespace MusicLibrary.Data.Services;
 
 public class SecurityService : ISecurityService
 {

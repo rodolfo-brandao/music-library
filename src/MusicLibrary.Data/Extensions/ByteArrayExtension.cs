@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace MusicLibrary.Application.Extensions;
+namespace MusicLibrary.Data.Extensions;
 
 [ExcludeFromCodeCoverage]
 internal static class ByteArrayExtension

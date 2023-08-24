@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
 using MusicLibrary.Application.Queries.Artists.ListArtists;
-using MusicLibrary.Application.Services;
 using MusicLibrary.Core.Contracts.Services;
+using MusicLibrary.Data.Services;
 
 namespace MusicLibrary.Application.Extensions;
 
