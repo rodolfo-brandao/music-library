@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +11,6 @@ using StackExchange.Redis;
 
 namespace MusicLibrary.Data.Extensions;
 
-[ExcludeFromCodeCoverage]
 public static class ServiceCollectionExtension
 {
     /// <summary>

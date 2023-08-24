@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Core.Models.Abstract;
 using MusicLibrary.Data.ContractResolvers;
@@ -6,7 +5,6 @@ using Newtonsoft.Json;
 
 namespace MusicLibrary.Data.Extensions;
 
-[ExcludeFromCodeCoverage]
 internal static class ModelBuilderExtension
 {
     public static ModelBuilder SeedModel<TEntity>(this ModelBuilder modelBuilder, string path) where TEntity : Entity
