@@ -1,3 +1,4 @@
+using MusicLibrary.Application.Utils;
 using Newtonsoft.Json;
 
 namespace MusicLibrary.Presentation.Middlewares
@@ -44,7 +45,7 @@ namespace MusicLibrary.Presentation.Middlewares
                 error = exception.Message
             });
 
-            httpContext.Response.ContentType = "application/json"; // TODO: Move this raw string to enum
+            httpContext.Response.ContentType = ContentTypes.Json;
             httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
             return httpContext.Response.WriteAsync(responseBody);
