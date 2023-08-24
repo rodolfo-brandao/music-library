@@ -82,8 +82,6 @@ jobs:
         --target "dotnet" \
         --targetargs "test --no-build" \
         --exclude "[*]MusicLibrary.Presentation*" \
-        --exclude "[*]MusicLibrary.Data*" \
-        --exclude "[*]MusicLibrary.Core*" \
         -f=opencover \
         -o="MusicLibrary.Tests/CoverageResults/coverage.xml"
 
