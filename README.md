@@ -8,10 +8,6 @@
 ![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rodolfo-brandao_music-library&metric=coverage)
 ![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rodolfo-brandao_music-library&metric=code_smells)
 
-<br>
-
-![SonarCloud badge](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)
-
 ## About
 This is a *simple* portfolio project that I develop in my spare time (and which is still ongoing) that aims to provide a **REST API** built in [.NET](https://dotnet.microsoft.com/), to manage music-related content.
 
