@@ -1,8 +1,16 @@
+
 # Music Library
 
-![Workflow: .NET](https://github.com/rodolfo-brandao/music-library/actions/workflows/dotnet-ci.yml/badge.svg)
-![dotnet version](https://img.shields.io/badge/.NET-7_STS-blue)
+![Pipeline](https://github.com/rodolfo-brandao/music-library/actions/workflows/pipeline.yml/badge.svg)
+![.NET Version](https://img.shields.io/badge/.NET-7_STS-blue)
 ![MIT License](https://img.shields.io/github/license/rodolfo-brandao/music-library)
+![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=rodolfo-brandao_music-library&metric=alert_status)
+![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rodolfo-brandao_music-library&metric=coverage)
+![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rodolfo-brandao_music-library&metric=code_smells)
+
+<br>
+
+![SonarCloud badge](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)
 
 ## About
 This is a *simple* portfolio project that I develop in my spare time (and which is still ongoing) that aims to provide a **REST API** built in [.NET](https://dotnet.microsoft.com/), to manage music-related content.
@@ -76,12 +84,14 @@ dotnet run --project MusicLibrary.Presentation/MusicLibrary.Presentation.csproj
 
 With this, the application's Swagger will be available via HTTPS at `localhost:7233` ([here](https://localhost:7233/swagger/index.html)).
 
-## Frameworks, Concepts & Patterns
-- [x] .NET 7 STS
+## Frameworks
+- [x] .NET 7 Standard Term Support
 - [x] Entity Framework Core
-- [x] Code-First
+- [x] xUnit
+
+## Concepts & Patterns
 - [x] Domain-driven Design
-- [x] Fluent API
+- [x] Code-First w/ Fluent API
 - [x] Repository
 - [x] Unit of Work
 
@@ -92,8 +102,11 @@ With this, the application's Swagger will be available via HTTPS at `localhost:7
 - [x] MediatR
 - [x] Moq
 - [x] Serilog
-- [x] SQLite
-- [x] xUnit
+
+## Databases
+
+- [SQLite](https://www.sqlite.org/index.html)
+- [Redis](https://redis.io/)
 
 ## Architecture
 
