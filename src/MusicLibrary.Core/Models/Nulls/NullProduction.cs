@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using MusicLibrary.Core.Enums;
 using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
+[ExcludeFromCodeCoverage]
 public sealed class NullProduction : Production, INullObject
 {
     public override Guid ArtistId => Guid.Empty;

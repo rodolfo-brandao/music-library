@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace MusicLibrary.Presentation.Extensions;
 
+[ExcludeFromCodeCoverage]
 internal static class ApplicationBuilderExtension
 {
     public static IApplicationBuilder AddCustomCorsPolicy(this IApplicationBuilder applicationBuilder)

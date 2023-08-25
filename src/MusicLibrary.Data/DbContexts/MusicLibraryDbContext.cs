@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Core.Models;
@@ -5,6 +6,7 @@ using MusicLibrary.Data.Extensions;
 
 namespace MusicLibrary.Data.DbContexts;
 
+[ExcludeFromCodeCoverage]
 public sealed class MusicLibraryDbContext : DbContext
 {
     public MusicLibraryDbContext(DbContextOptions<MusicLibraryDbContext> options) : base(options)

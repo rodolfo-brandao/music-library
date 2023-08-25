@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace MusicLibrary.Presentation.Extensions;
 
+[ExcludeFromCodeCoverage]
 internal static class MvcBuilderExtension
 {
     public static IMvcBuilder AddCustomMvc(this IServiceCollection serviceCollection)

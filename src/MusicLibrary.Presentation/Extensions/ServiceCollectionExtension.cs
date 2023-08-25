@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -9,6 +10,7 @@ using Serilog;
 
 namespace MusicLibrary.Presentation.Extensions;
 
+[ExcludeFromCodeCoverage]
 internal static class ServiceCollectionExtension
 {
     public static IServiceCollection AddCustomApiVersioning(this IServiceCollection serviceCollection)

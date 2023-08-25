@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
+[ExcludeFromCodeCoverage]
 public sealed class NullArtist : Artist, INullObject
 {
     public override Guid GenreId => Guid.Empty;

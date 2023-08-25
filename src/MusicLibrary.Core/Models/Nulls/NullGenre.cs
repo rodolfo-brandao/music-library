@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using MusicLibrary.Core.Models.Abstract;
 
 namespace MusicLibrary.Core.Models.Nulls;
 
+[ExcludeFromCodeCoverage]
 public sealed class NullGenre : Genre, INullObject
 {
     public override string Name => string.Empty;

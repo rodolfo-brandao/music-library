@@ -1,9 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MusicLibrary.Core.Models;
 
 namespace MusicLibrary.Data.Mappings;
 
+[ExcludeFromCodeCoverage]
 public class ArtistMapping : IEntityTypeConfiguration<Artist>
 {
     public void Configure(EntityTypeBuilder<Artist> builder)
