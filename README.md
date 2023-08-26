@@ -135,4 +135,4 @@ To view it, go [here](https://sonarcloud.io/project/overview?id=rodolfo-brandao_
 [MIT License](LICENSE)
 
 ## Credits
-The development and maintenance of the project contained in this repository has been my sole responsibility, [@rodolfo-brandao](github.com/rodolfo-brandao), the owner.
+The development and maintenance of the project contained in this repository has been my sole responsibility, [Rodolfo Brandão](https://www.linkedin.com/in/rodolfo-brandao/), the owner.
