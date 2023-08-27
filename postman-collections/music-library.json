@@ -68,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"adminuser\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"username\": \"foobar\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -135,13 +135,13 @@
 	],
 	"variable": [
 		{
-			"id": "586eb370-cd1e-404f-bcdb-02c9bab10746",
+			"id": "70c1f317-b0a6-4cd6-aeeb-d2c3f18574ab",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "48ead935-5fb9-4e02-9df0-9c8ecdc423c7",
+			"id": "f03432ee-923b-4d42-bf40-29f487962ad3",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
