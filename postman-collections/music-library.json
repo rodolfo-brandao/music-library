@@ -80,7 +80,7 @@
 					"response": []
 				},
 				{
-					"name": "api/users/v1/token",
+					"name": "api/users/v1/",
 					"id": "88f0af4c-d749-44a0-82f8-bda0c5f53866",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -125,13 +125,13 @@
 	],
 	"variable": [
 		{
-			"id": "fc98a98e-798b-40b3-87b2-3d460a561d4f",
+			"id": "9d0b20ae-6cd3-4bae-ab0f-f811dda518d6",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "6f2f63b8-80f6-4a08-b637-0535f5a8d293",
+			"id": "c68ba740-524d-4b84-a4a3-bd408602ac05",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
