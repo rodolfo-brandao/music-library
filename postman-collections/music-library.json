@@ -79,25 +79,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": {
-							"raw": "{{localhost}}/api/genres/v1?orderBy=asc",
-							"host": [
-								"{{localhost}}"
-							],
-							"path": [
-								"api",
-								"genres",
-								"v1"
-							],
-							"query": [
-								{
-									"key": "orderBy",
-									"value": "asc"
-								}
-							]
-						}
+						"url": "{{localhost}}/api/genres/v1"
 					},
 					"response": []
 				}
@@ -199,13 +183,13 @@
 	],
 	"variable": [
 		{
-			"id": "93672c76-1802-4c88-b365-55e2875ba29c",
+			"id": "dc0665a7-a9f6-4547-b4bb-5d5ee26b8bd9",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "ac377de3-3bdf-4996-8a2e-e9448d480bd4",
+			"id": "40a3ff7e-a02f-4469-9cf0-dd447786294c",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
