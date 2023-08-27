@@ -105,7 +105,7 @@
 			"id": "b5520b1b-ac2f-4465-952f-ffd78bbe1219"
 		},
 		{
-			"name": "New Folder",
+			"name": "Genres",
 			"item": [],
 			"id": "8b292582-dec5-43cc-aed0-0d7e77e57891"
 		}
@@ -140,13 +140,13 @@
 	],
 	"variable": [
 		{
-			"id": "ab6ec29e-482d-4f02-885f-3793238fa058",
+			"id": "706cf73b-e0b8-4248-8ef4-6b83c25f7578",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "5340d9ee-e36c-43f5-90b8-3dd1eadc8883",
+			"id": "9f6b62b3-2cee-48b1-9aa1-e52c41dc409c",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
