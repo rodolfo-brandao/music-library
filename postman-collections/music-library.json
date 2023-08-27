@@ -81,6 +81,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"temp2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{localhost}}/api/genres/v1"
 					},
 					"response": []
@@ -183,13 +192,13 @@
 	],
 	"variable": [
 		{
-			"id": "dc0665a7-a9f6-4547-b4bb-5d5ee26b8bd9",
+			"id": "61358db8-e98b-4fda-b3d8-20eb5ab92be2",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "40a3ff7e-a02f-4469-9cf0-dd447786294c",
+			"id": "9a0790d3-e5ac-465b-9936-c77770c1cfa7",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
