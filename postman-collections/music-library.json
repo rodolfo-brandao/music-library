@@ -10,7 +10,7 @@
 			"item": [
 				{
 					"name": "api/artists/v1",
-					"_postman_id": "77dcbca7-bfa9-408f-91aa-56d98dce5cf9",
+					"id": "77dcbca7-bfa9-408f-91aa-56d98dce5cf9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -38,7 +38,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "986c7211-396b-4b1a-bb68-9b5cbc0118b2"
+			"id": "986c7211-396b-4b1a-bb68-9b5cbc0118b2"
 		},
 		{
 			"name": "Users",
@@ -59,7 +59,7 @@
 							}
 						}
 					],
-					"_postman_id": "a64b1197-d2ad-409f-b4fe-888daebbe222",
+					"id": "a64b1197-d2ad-409f-b4fe-888daebbe222",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -78,9 +78,21 @@
 						"url": "{{localhost}}/api/users/v1/token"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "88f0af4c-d749-44a0-82f8-bda0c5f53866",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
-			"_postman_id": "b5520b1b-ac2f-4465-952f-ffd78bbe1219"
+			"id": "b5520b1b-ac2f-4465-952f-ffd78bbe1219"
 		}
 	],
 	"auth": {
@@ -113,13 +125,13 @@
 	],
 	"variable": [
 		{
-			"id": "389dcdcd-210b-4c60-badc-0b90d008e744",
+			"id": "9198c468-4403-4a80-8ef6-d68a22e1e312",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "6688d6fd-6182-4585-9907-0b83faf01bb9",
+			"id": "5fb20b9a-095b-4d83-b80c-5dc5888c6976",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
