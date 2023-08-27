@@ -17,6 +17,9 @@ namespace MusicLibrary.Tests.Setup.Builders.Services
 
         public static SecurityServiceMockBuilder Create() => new();
 
+        /// <summary>
+        /// Mocks the CreateUserAccessToken() method.
+        /// </summary>
         public SecurityServiceMockBuilder SetupCreateUserAccessToken()
         {
             _mock.Setup(securityService => securityService.CreateUserAccessToken(It.IsAny<User>()))
@@ -24,13 +27,22 @@ namespace MusicLibrary.Tests.Setup.Builders.Services
             return this;
         }
 
-        public SecurityServiceMockBuilder SetupGetUserAsync(User userModelToBeReturned = default)
+        /// <summary>
+        /// Mocks the GetUserAsync() method.
+        /// </summary>
+        /// <param name="user">The model to be returned by the mocked method (optional).</param>
+        public SecurityServiceMockBuilder SetupGetUserAsync(User user = default)
         {
             _mock.Setup(securityService => securityService.GetUserAsync(It.IsAny<string>()))
-                .ReturnsAsync(userModelToBeReturned ?? new NullUser());
+                .ReturnsAsync(user ?? new NullUser());
             return this;
         }
 
+        /// <summary>
+        /// Mocks the ValidatePassword() method.
+        /// </summary>
+        /// <param name="passwordIsValid">Indicates the return value of the mocked method.</param>
+        /// <returns></returns>
         public SecurityServiceMockBuilder SetupValidatePassword(bool passwordIsValid = default)
         {
             _mock.Setup(securityService =>

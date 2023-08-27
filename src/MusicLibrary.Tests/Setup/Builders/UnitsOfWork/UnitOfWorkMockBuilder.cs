@@ -15,6 +15,9 @@ namespace MusicLibrary.Tests.Setup.Builders.UnitsOfWork
 
         public static UnitOfWorkMockBuilder Create() => new();
 
+        /// <summary>
+        /// Mocks the SaveChangesAsync() method.
+        /// </summary>
         public UnitOfWorkMockBuilder SetupSaveChangesAsync()
         {
             _mock.Setup(unitOfWork => unitOfWork.SaveChangesAsync()).ReturnsAsync(default(int));
