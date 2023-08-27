@@ -41,6 +41,24 @@
 			"id": "986c7211-396b-4b1a-bb68-9b5cbc0118b2"
 		},
 		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "31f06b92-95f1-40a8-9335-fd04586f400f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "8b292582-dec5-43cc-aed0-0d7e77e57891"
+		},
+		{
 			"name": "Users",
 			"item": [
 				{
@@ -103,11 +121,6 @@
 				}
 			],
 			"id": "b5520b1b-ac2f-4465-952f-ffd78bbe1219"
-		},
-		{
-			"name": "Genres",
-			"item": [],
-			"id": "8b292582-dec5-43cc-aed0-0d7e77e57891"
 		}
 	],
 	"auth": {
@@ -140,13 +153,13 @@
 	],
 	"variable": [
 		{
-			"id": "706cf73b-e0b8-4248-8ef4-6b83c25f7578",
+			"id": "26d23bb9-5b79-4e24-8d17-a6dfac6b69a2",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "9f6b62b3-2cee-48b1-9aa1-e52c41dc409c",
+			"id": "c7b73c5a-2291-4740-979e-fd65cf0b0955",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
