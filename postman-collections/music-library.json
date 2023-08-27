@@ -135,13 +135,13 @@
 	],
 	"variable": [
 		{
-			"id": "70c1f317-b0a6-4cd6-aeeb-d2c3f18574ab",
+			"id": "f31b5cf7-ab26-4b59-bf37-7c604f0b473d",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "f03432ee-923b-4d42-bf40-29f487962ad3",
+			"id": "509fa5b9-84c7-4ad8-91dd-76c9c11893de",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
