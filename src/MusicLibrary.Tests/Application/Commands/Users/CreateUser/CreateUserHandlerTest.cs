@@ -2,6 +2,7 @@ using System.Collections;
 using MusicLibrary.Application.Commands.Users.CreateUser;
 using MusicLibrary.Application.Responses.Users;
 using MusicLibrary.Application.Utils;
+using MusicLibrary.Tests.Setup.Builders.Factories;
 using MusicLibrary.Tests.Setup.Builders.Services;
 using MusicLibrary.Tests.Setup.Fakers.Commands.Users.CreateUser;
 using MusicLibrary.Tests.Setup.Fakers.Models;
@@ -30,7 +31,12 @@ public class CreateUserHandlerTest
             .SetupGetUserAsync()
             .Build();
 
-        var handler = new CreateUserHandler(securityService, _logger);
+        var modelFactory = ModelFactoryMockBuilder
+            .Create()
+            .SetupCreateUser()
+            .Build();
+
+        var handler = new CreateUserHandler(securityService, modelFactory, _logger);
 
         // Act:
         var sut = await handler.Handle(command, cancellationToken: default);
@@ -41,7 +47,7 @@ public class CreateUserHandlerTest
         sut.ErrorMessage.Should().BeNull();
     }
 
-    [Fact(DisplayName = "[async] Handle() - Failure Case: username already exists in database")]
+    [Fact(DisplayName = "[async] Handle() - Failure Case: user already exists for given username")]
     public async Task Handle_PassCommandObjectWithUsernameThatExists_HandlerShouldNotCreateUser()
     {
         // Arrange:
@@ -50,10 +56,15 @@ public class CreateUserHandlerTest
 
         var securityService = SecurityServiceMockBuilder
             .Create()
-            .SetupGetUserAsync(userModelToBeReturned: user)
+            .SetupGetUserAsync(user: user)
             .Build();
 
-        var handler = new CreateUserHandler(securityService, _logger);
+        var modelFactory = ModelFactoryMockBuilder
+            .Create()
+            .SetupCreateUser()
+            .Build();
+
+        var handler = new CreateUserHandler(securityService, modelFactory, _logger);
 
         // Act:
         var sut = await handler.Handle(command, cancellationToken: default);
@@ -76,7 +87,12 @@ public class CreateUserHandlerTest
             .SetupGetUserAsync()
             .Build();
 
-        var handler = new CreateUserHandler(securityService, _logger);
+        var modelFactory = ModelFactoryMockBuilder
+            .Create()
+            .SetupCreateUser()
+            .Build();
+
+        var handler = new CreateUserHandler(securityService, modelFactory, _logger);
 
         // Act:
         var sut = await handler.Handle(command, cancellationToken: default);
