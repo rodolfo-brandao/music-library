@@ -51,7 +51,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "{{localhost}}/api/genres/v1"
 					},
 					"response": []
 				}
@@ -153,13 +154,13 @@
 	],
 	"variable": [
 		{
-			"id": "fc6552e2-8254-41e3-9616-36d449977241",
+			"id": "09df4b63-5222-457f-9555-644c72c5a241",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "2f5096a4-286a-42e2-b1ad-e2c8f57dc04f",
+			"id": "05ee5091-0ba9-458a-bdf8-a6ffd1d02954",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
