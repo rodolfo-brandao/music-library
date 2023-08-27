@@ -29,7 +29,7 @@ public class CreateAccessTokenHandlerTest
         var securityService = SecurityServiceMockBuilder
             .Create()
             .SetupCreateUserAccessToken()
-            .SetupGetUserAsync(userModelToBeReturned: user)
+            .SetupGetUserAsync(user: user)
             .SetupValidatePassword(passwordIsValid: true)
             .Build();
 
@@ -55,7 +55,7 @@ public class CreateAccessTokenHandlerTest
         var securityService = SecurityServiceMockBuilder
             .Create()
             .SetupCreateUserAccessToken()
-            .SetupGetUserAsync(userModelToBeReturned: user)
+            .SetupGetUserAsync(user: user)
             .SetupValidatePassword(passwordIsValid: true)
             .Build();
 
