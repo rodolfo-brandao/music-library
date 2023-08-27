@@ -88,7 +88,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"temp2\"\n}",
+							"raw": "{\n    \"name\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -197,13 +197,13 @@
 	],
 	"variable": [
 		{
-			"id": "e36c31df-6be3-4734-b3c1-1db84219515a",
+			"id": "7d67f1b1-03a9-4815-a505-851155f31dc4",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "821683b1-8be9-49ba-8226-fe6058760fde",
+			"id": "72e97728-d8c4-459a-9a93-b8a0a8d12b4d",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
