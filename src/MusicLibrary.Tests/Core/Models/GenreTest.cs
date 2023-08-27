@@ -1,3 +1,4 @@
+using MusicLibrary.Core.Contracts.Factories;
 using MusicLibrary.Core.Factories;
 using MusicLibrary.Tests.Setup.Fakers.Models;
 

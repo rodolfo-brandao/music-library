@@ -1,7 +1,7 @@
 using MusicLibrary.Core.Enums;
 using MusicLibrary.Core.Models;
 
-namespace MusicLibrary.Core.Factories;
+namespace MusicLibrary.Core.Contracts.Factories;
 
 /// <summary>
 /// A factory abstraction for a component that can create model instances.

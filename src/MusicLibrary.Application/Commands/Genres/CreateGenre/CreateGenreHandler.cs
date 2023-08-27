@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using MusicLibrary.Application.Responses.Genres;
 using MusicLibrary.Application.Utils;
+using MusicLibrary.Core.Contracts.Factories;
 using MusicLibrary.Core.Contracts.Repositories;
 using MusicLibrary.Core.Contracts.Units;
 using MusicLibrary.Core.Factories;
