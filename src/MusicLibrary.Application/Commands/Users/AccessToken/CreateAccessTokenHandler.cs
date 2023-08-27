@@ -21,8 +21,6 @@ public class CreateAccessTokenHandler : IRequestHandler<CreateAccessTokenCommand
     public async Task<ApiResult<CreatedAccessTokenResponse>> Handle(CreateAccessTokenCommand request,
         CancellationToken cancellationToken)
     {
-        _logger.Debug("Preparing to create access token for user: {Username}", request.Username);
-
         var apiResult = new ApiResult<CreatedAccessTokenResponse>();
         var user = await _securityService.GetUserAsync(request.Username);
         var validation =
@@ -46,8 +44,6 @@ public class CreateAccessTokenHandler : IRequestHandler<CreateAccessTokenCommand
                 TokenType = "Bearer",
                 ExpiresIn = oneHourInSeconds
             };
-
-            _logger.Debug("Access token created successfully for user: {Username}", request.Username);
         }
 
         return apiResult;

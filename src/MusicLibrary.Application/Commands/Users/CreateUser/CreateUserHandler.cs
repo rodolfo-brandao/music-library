@@ -11,21 +11,19 @@ namespace MusicLibrary.Application.Commands.Users.CreateUser;
 public class CreateUserHandler : IRequestHandler<CreateUserCommand, ApiResult<CreatedUserResponse>>
 {
     private readonly ISecurityService _securityService;
-    private readonly ModelFactory _modelFactory;
+    private readonly IModelFactory _modelFactory;
     private readonly ILogger _logger;
 
-    public CreateUserHandler(ISecurityService securityService, ILogger logger)
+    public CreateUserHandler(ISecurityService securityService, IModelFactory modelFactory, ILogger logger)
     {
         _securityService = securityService;
-        _modelFactory = new ModelFactory();
+        _modelFactory = modelFactory;
         _logger = logger;
     }
 
     public async Task<ApiResult<CreatedUserResponse>> Handle(CreateUserCommand request,
         CancellationToken cancellationToken)
     {
-        _logger.Debug("Preparing to create new user with username: {Username}", request.Username);
-
         var apiResult = new ApiResult<CreatedUserResponse>(statusCode: StatusCodes.Status201Created);
         var validation = await new CreateUserValidator(_securityService).ValidateAsync(request, cancellationToken);
 
@@ -56,8 +54,6 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, ApiResult<Cr
                 Role = user.Role,
                 CreatedAt = user.CreatedAt
             };
-
-            _logger.Debug("User '{Username}' created successfully.", user.Username);
         }
 
         return apiResult;
