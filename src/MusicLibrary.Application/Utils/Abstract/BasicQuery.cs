@@ -1,4 +1,4 @@
-namespace MusicLibrary.Application.Queries.Abstract;
+namespace MusicLibrary.Application.Utils.Abstract;
 
 /// <summary>
 /// Simple abstraction to provide common query properties.

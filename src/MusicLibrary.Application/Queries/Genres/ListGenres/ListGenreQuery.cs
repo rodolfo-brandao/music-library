@@ -1,7 +1,7 @@
 using MediatR;
-using MusicLibrary.Application.Queries.Abstract;
 using MusicLibrary.Application.Responses.Genres;
 using MusicLibrary.Application.Utils;
+using MusicLibrary.Application.Utils.Abstract;
 
 namespace MusicLibrary.Application.Queries.Genres.ListGenres;
 
