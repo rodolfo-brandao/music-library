@@ -44,7 +44,7 @@
 			"name": "Genres",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "api/genres/v1",
 					"id": "31f06b92-95f1-40a8-9335-fd04586f400f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -153,13 +153,13 @@
 	],
 	"variable": [
 		{
-			"id": "26d23bb9-5b79-4e24-8d17-a6dfac6b69a2",
+			"id": "5d7f9423-a966-4ed3-9fa1-b6e4fb85ee63",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "c7b73c5a-2291-4740-979e-fd65cf0b0955",
+			"id": "464c467e-9f0a-4ae0-9599-65b2e647efb9",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
