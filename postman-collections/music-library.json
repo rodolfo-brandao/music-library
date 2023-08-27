@@ -52,7 +52,24 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{localhost}}/api/genres/v1"
+						"url": {
+							"raw": "{{localhost}}/api/genres/v1?orderBy=desc",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "desc",
+									"type": "text"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -154,13 +171,13 @@
 	],
 	"variable": [
 		{
-			"id": "09df4b63-5222-457f-9555-644c72c5a241",
+			"id": "d1294b45-7019-4d22-9bf8-7cc927620a2c",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "05ee5091-0ba9-458a-bdf8-a6ffd1d02954",
+			"id": "6e9c579a-2d35-4879-9f97-8caf6d40a9ce",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
