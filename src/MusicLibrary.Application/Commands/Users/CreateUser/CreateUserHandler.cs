@@ -53,7 +53,7 @@ public class CreateUserHandler : IRequestHandler<CreateUserCommand, ApiResult<Cr
                 Id = user.Id,
                 Username = user.Username,
                 Role = user.Role,
-                CreatedAt = user.CreatedAt
+                CreatedAt = user.CreatedOn
             };
         }
 

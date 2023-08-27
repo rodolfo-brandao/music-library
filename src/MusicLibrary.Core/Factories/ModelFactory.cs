@@ -11,8 +11,8 @@ public sealed class ModelFactory : IModelFactory
         Id = Guid.NewGuid(),
         GenreId = genreId,
         Name = name,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = default,
+        CreatedOn = DateTime.UtcNow,
+        UpdatedOn = default,
         IsDisabled = default
     };
 
@@ -20,8 +20,8 @@ public sealed class ModelFactory : IModelFactory
     {
         Id = Guid.NewGuid(),
         Name = name,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = default,
+        CreatedOn = DateTime.UtcNow,
+        UpdatedOn = default,
         IsDisabled = default
     };
 
@@ -33,8 +33,8 @@ public sealed class ModelFactory : IModelFactory
         Title = title,
         Category = category,
         ReleaseDate = releaseDate,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = default,
+        CreatedOn = DateTime.UtcNow,
+        UpdatedOn = default,
         IsDisabled = default
     };
 
@@ -45,8 +45,8 @@ public sealed class ModelFactory : IModelFactory
         Position = position,
         Title = title,
         Length = length,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = default,
+        CreatedOn = DateTime.UtcNow,
+        UpdatedOn = default,
         IsDisabled = default
     };
 
@@ -57,8 +57,8 @@ public sealed class ModelFactory : IModelFactory
         Password = password,
         PasswordSalt = passwordSalt,
         Role = role,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = default,
+        CreatedOn = DateTime.UtcNow,
+        UpdatedOn = default,
         IsDisabled = default
     };
 }

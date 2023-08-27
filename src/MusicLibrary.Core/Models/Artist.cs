@@ -40,7 +40,7 @@ public class Artist : TrackableEntity
 
     public override TrackableEntity UpdateNow()
     {
-        UpdatedAt = DateTime.UtcNow;
+        UpdatedOn = DateTime.UtcNow;
         return this;
     }
 }

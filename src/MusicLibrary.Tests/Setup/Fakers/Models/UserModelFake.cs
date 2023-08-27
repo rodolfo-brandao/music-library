@@ -17,8 +17,8 @@ namespace MusicLibrary.Tests.Setup.Fakers.Models
             .RuleFor(user => user.Password, faker => faker.Hashids.Encode())
             .RuleFor(user => user.PasswordSalt, faker => faker.Hashids.Encode())
             .RuleFor(user => user.Role, faker => faker.PickRandom(Roles))
-            .RuleFor(user => user.CreatedAt, _ => DateTime.UtcNow)
-            .RuleFor(user => user.UpdatedAt, _ => default)
+            .RuleFor(user => user.CreatedOn, _ => DateTime.UtcNow)
+            .RuleFor(user => user.UpdatedOn, _ => default)
             .RuleFor(user => user.IsDisabled, _ => default)
             .Generate();
     }

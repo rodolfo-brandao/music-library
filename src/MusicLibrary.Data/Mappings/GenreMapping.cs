@@ -24,14 +24,14 @@ public class GenreMapping : IEntityTypeConfiguration<Genre>
             .HasColumnName("name")
             .IsRequired();
 
-        builder.Property(genre => genre.CreatedAt)
+        builder.Property(genre => genre.CreatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("created_at")
+            .HasColumnName("created_on")
             .IsRequired();
 
-        builder.Property(genre => genre.UpdatedAt)
+        builder.Property(genre => genre.UpdatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("updated_at")
+            .HasColumnName("updated_on")
             .IsRequired(required: default);
 
         builder.Property(genre => genre.IsDisabled)

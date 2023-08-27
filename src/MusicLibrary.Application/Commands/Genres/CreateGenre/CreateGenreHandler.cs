@@ -49,7 +49,7 @@ public class CreateGenreHandler : IRequestHandler<CreateGenreCommand, ApiResult<
             {
                 Id = genre.Id,
                 Name = genre.Name,
-                CreatedOn = genre.CreatedAt
+                CreatedOn = genre.CreatedOn
             };
         }
 

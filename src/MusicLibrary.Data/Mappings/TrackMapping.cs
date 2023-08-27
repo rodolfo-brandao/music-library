@@ -39,14 +39,14 @@ public class TrackMapping : IEntityTypeConfiguration<Track>
             .HasColumnName("length")
             .IsRequired();
 
-        builder.Property(track => track.CreatedAt)
+        builder.Property(track => track.CreatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("created_at")
+            .HasColumnName("created_on")
             .IsRequired();
 
-        builder.Property(track => track.UpdatedAt)
+        builder.Property(track => track.UpdatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("updated_at")
+            .HasColumnName("updated_on")
             .IsRequired(required: default);
 
         builder.Property(track => track.IsDisabled)

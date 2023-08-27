@@ -39,14 +39,14 @@ public class ProductionMapping : IEntityTypeConfiguration<Production>
             .HasColumnName("release_year")
             .IsRequired();
 
-        builder.Property(production => production.CreatedAt)
+        builder.Property(production => production.CreatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("created_at")
+            .HasColumnName("created_on")
             .IsRequired();
 
-        builder.Property(production => production.UpdatedAt)
+        builder.Property(production => production.UpdatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("updated_at")
+            .HasColumnName("updated_on")
             .IsRequired(required: default);
 
         builder.Property(production => production.IsDisabled)

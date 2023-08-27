@@ -29,14 +29,14 @@ public class ArtistMapping : IEntityTypeConfiguration<Artist>
             .HasColumnName("name")
             .IsRequired();
 
-        builder.Property(artist => artist.CreatedAt)
+        builder.Property(artist => artist.CreatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("created_at")
+            .HasColumnName("created_on")
             .IsRequired();
 
-        builder.Property(artist => artist.UpdatedAt)
+        builder.Property(artist => artist.UpdatedOn)
             .HasColumnType("DATETIME2")
-            .HasColumnName("updated_at")
+            .HasColumnName("updated_on")
             .IsRequired(required: default);
 
         builder.Property(artist => artist.IsDisabled)
