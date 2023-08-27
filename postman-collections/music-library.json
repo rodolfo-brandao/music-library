@@ -88,6 +88,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"foobar\",\n    \"password\": \"123456\",\n    \"isAdmin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{localhost}}/api/users/v1"
 					},
 					"response": []
@@ -126,13 +135,13 @@
 	],
 	"variable": [
 		{
-			"id": "f8452bd7-2e8e-46c6-8c2b-9be17ad8a2be",
+			"id": "586eb370-cd1e-404f-bcdb-02c9bab10746",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "5dd8ff62-c1a1-431f-8938-6ff1674e2afb",
+			"id": "48ead935-5fb9-4e02-9df0-9c8ecdc423c7",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
