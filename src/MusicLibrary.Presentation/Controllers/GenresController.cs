@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MusicLibrary.Application.Commands.Genres.CreateGenre;
 using MusicLibrary.Application.Queries.Genres.ListGenres;
 using MusicLibrary.Application.Responses.Genres;
 using MusicLibrary.Application.Utils;
@@ -32,9 +33,25 @@ public class GenresController : ResponseHandlerController
     /// <param name="query">The object containing the query params.</param>
     /// <param name="cancellationToken">The cancellation token object.</param>
     /// <response code="200">Returns a list containing all genres.</response>
+    /// <response code="401">You are not authorized to use this resource.</response>
     [HttpGet(Name = "list-genres")]
     [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(DefaultGenreResponse[]))]
+    [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized, type: typeof(string))]
     public async Task<IActionResult> ListGenresAsync([FromQuery] ListGenreQuery query,
         CancellationToken cancellationToken = default)
         => BuildResponse(await _mediator.Send(query, cancellationToken));
+
+    /// <summary>
+    /// Creates a new genre.
+    /// </summary>
+    /// <param name="command">The request body object.</param>
+    /// <param name="cancellationToken">The cancellation token object.</param>
+    /// <response code="201">Genre created successfully.</response>
+    /// <response code="401">You are not authorized to use this resource.</response>
+    [HttpPost(Name = "create-genre")]
+    [ProducesResponseType(statusCode: StatusCodes.Status201Created, type: typeof(CreatedGenreResponse))]
+    [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized, type: typeof(string))]
+    public async Task<IActionResult> CreateGenreAsync([FromBody] CreateGenreCommand command,
+        CancellationToken cancellationToken = default)
+        => BuildResponse(await _mediator.Send(command, cancellationToken));
 }
