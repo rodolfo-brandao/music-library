@@ -86,7 +86,7 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -125,13 +125,13 @@
 	],
 	"variable": [
 		{
-			"id": "9d0b20ae-6cd3-4bae-ab0f-f811dda518d6",
+			"id": "37b4ce20-cf07-48be-aada-5e46b6736982",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "c68ba740-524d-4b84-a4a3-bd408602ac05",
+			"id": "ab48feed-3c79-4154-9213-8008f5782fa3",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
