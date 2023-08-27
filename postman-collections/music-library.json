@@ -103,6 +103,11 @@
 				}
 			],
 			"id": "b5520b1b-ac2f-4465-952f-ffd78bbe1219"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "8b292582-dec5-43cc-aed0-0d7e77e57891"
 		}
 	],
 	"auth": {
@@ -135,13 +140,13 @@
 	],
 	"variable": [
 		{
-			"id": "f31b5cf7-ab26-4b59-bf37-7c604f0b473d",
+			"id": "ab6ec29e-482d-4f02-885f-3793238fa058",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "509fa5b9-84c7-4ad8-91dd-76c9c11893de",
+			"id": "5340d9ee-e36c-43f5-90b8-3dd1eadc8883",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
