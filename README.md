@@ -120,6 +120,74 @@ The detailed list of all packages used in this project can be accessed [here](do
 
 <img src="assets/api-architecture.png" alt="API Architecture" witdh="500" />
 
+## How does it work?
+
+### Commands & Queries
+
+When it comes to the exposed layer of our application, which is called **Presentation**, the first thing we notice in this architecture is the fact that all HTTP requests are segregated into 2 categories:
+- Commands
+- Queries
+
+Where,
+- For requests that consist of commands, the *insertion*, *update* and *deletion* actions can be performed within the database
+- As for the requests that deal with queries, only the *reading* action will be performed by the database
+
+Bearing in mind that both actions can occur both in the SQLite and Redis database.
+
+### Handlers & Validators
+
+Moving on to the second component of our architecture, which communicates directly with the *Presentation* layer, we have a layer called **Application**.
+
+This is responsible for applying the backend business definitions of our API through handlers that implement the [Mediator pattern](https://en.wikipedia.org/wiki/Mediator_pattern). Where, for this purpose, the validation of the data coming from the commands/queries is carried out.
+
+In cases where these validations fail, generally speaking, the API will return responses containing the HTTP status code `400 Bad Request` along with the respective message of the cause of the failure.
+
+For successful cases, the API will return responses containing the appropriate HTTP status code, within the range 200–299, which may also have the JSON object of the respective resource.
+
+### Repositories, Unit of Work & Services
+
+From this moment on, we will be talking about the layer responsible for data communication and management, being directly connected to SQLite and Redis databases. This layer is simply named **Data**.
+
+In practical terms, we will find here the concrete implementations of the components responsible for establishing the connection with the data source, writing and reading in the databases, committing the actions performed in them and also managing the application's security features. Such components are:
+- Entity repositories (for commands/queries actions)
+- Unit of Work (to commit command actions)
+- Security Service (to manage users and access tokens)
+
+These are used within the handlers contained in the *Application* layer to enable business rules, thus resulting in a dependency on this layer.
+
+### Models & Contracts
+
+Finally, consisting of the most "deep" part of our API, we have the so-called **Core** layer. Where here we define our domain from the entities conceived through the need of the project.
+
+Such entities are:
+- Artists
+- Musical genres)
+- Productions
+- Tracks
+- Users
+
+Where, for each one, we have their null state representations:
+- NullArtists
+- NullGenre
+- Null Procution
+- NullTrack
+- NullUser
+
+In addition to specifying the contracts of the concrete components of the *Data* layer. These being:
+- IRepository{T} (base implementation)
+- IArtistRepository
+- IGenreRepository
+- IProductionRepository
+- ITrackRepository
+
+---
+
+- IUnitOfWork
+
+---
+
+- ISecurityService (for users)
+
 ## SonarCloud
 
 This project's CI pipeline triggers [SonarCloud](https://sonarcloud.io/) analytics for every *push* or pull request created in the `main` and `develop` branches.
