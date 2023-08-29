@@ -51,10 +51,11 @@ public class SecurityService : ISecurityService
             new(ClaimTypes.Role, user.Role)
         };
 
+        const ushort oneHour = 1;
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddHours(1),
+            Expires = DateTime.UtcNow.AddHours(oneHour),
             SigningCredentials = signInCredentials
         };
 
