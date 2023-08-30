@@ -1,5 +1,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Configuration;
+using MusicLibrary.Core.Models;
+using MusicLibrary.Core.Models.Nulls;
 using MusicLibrary.Data.Services;
 using MusicLibrary.Tests.Setup.Builders.Microsoft.Extensions.Configuration;
 using MusicLibrary.Tests.Setup.Builders.StackExchange.Redis;
@@ -57,6 +59,83 @@ public partial class SecurityServiceTest
 
         // Assert:
         sut.Should().BeOfType<string>().And.NotBeNullOrWhiteSpace();
+    }
+
+    [Fact(DisplayName = "CreateUserAsync() - Success Case")]
+    public async Task CreateUserAsync_PassValidUserModel_ServiceShouldCreateNewUser()
+    {
+        // Arrange:
+        var user = UserModelFake.Valid();
+        var configuration = ConfigurationMockBuilder.Create().Build();
+
+        var redisDatabase = DatabaseMockBuilder
+            .Create()
+            .SetupStringSetAsync(stringWasSet: true)
+            .Build();
+
+        var connectionMultiplexer = ConnectionMultiplexerMockBuilder
+            .Create()
+            .SetupGetDatabase(redisDatabase)
+            .Build();
+
+        var securityService = new SecurityService(configuration, connectionMultiplexer);
+
+        // Act:
+        var sut = await securityService.CreateUserAsync(user);
+
+        // Assert:
+        sut.Should().BeTrue();
+    }
+
+    [Fact(DisplayName = "GetUserAsync() - Success Case")]
+    public async Task GetUserAsync_PassExistentUsername_ServiceShouldReturnUser()
+    {
+        // Arrange:
+        var anyUsername = _faker.Internet.UserName();
+        var configuration = ConfigurationMockBuilder.Create().Build();
+
+        var redisDatabase = DatabaseMockBuilder
+            .Create()
+            .SetupStringGetAsync(key: anyUsername)
+            .Build();
+
+        var connectionMultiplexer = ConnectionMultiplexerMockBuilder
+            .Create()
+            .SetupGetDatabase(redisDatabase)
+            .Build();
+
+        var securityService = new SecurityService(configuration, connectionMultiplexer);
+
+        // Act:
+        var sut = await securityService.GetUserAsync(anyUsername);
+
+        // Assert:
+        sut.Should().NotBeNull().And.BeOfType<User>();
+    }
+
+    [Fact(DisplayName = "GetUserAsync() - Failure Case: non-existent username")]
+    public async Task GetUserAsync_PassNonExistentUsername_ServiceShouldNotReturnAnyUser()
+    {
+        // Arrange:
+        var anyUsername = _faker.Internet.UserName();
+        var configuration = ConfigurationMockBuilder.Create().Build();
+
+        var redisDatabase = DatabaseMockBuilder
+            .Create()
+            .Build();
+
+        var connectionMultiplexer = ConnectionMultiplexerMockBuilder
+            .Create()
+            .SetupGetDatabase(redisDatabase)
+            .Build();
+
+        var securityService = new SecurityService(configuration, connectionMultiplexer);
+
+        // Act:
+        var sut = await securityService.GetUserAsync(anyUsername);
+
+        // Assert:
+        sut.Should().NotBeNull().And.BeOfType<NullUser>();
     }
 
     [Fact(DisplayName = "ValidatePassword() - Success Case")]
