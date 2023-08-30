@@ -160,14 +160,14 @@ These are used within the handlers contained in the *Application* layer to enabl
 Finally, consisting of the most "deep" part of our API, we have the so-called **Core** layer. Where here we define our domain from the entities conceived through the need of the project.
 
 Such entities are:
-- Artists
+- Artist
 - Genres (musical)
-- Productions
-- Tracks
-- Users
+- Production
+- Track
+- User
 
 Where, for each one, we have their null state representations:
-- NullArtists
+- NullArtist
 - NullGenre
 - Null Procution
 - NullTrack
@@ -186,7 +186,7 @@ In addition to specifying the contracts of the concrete components of the *Data*
 
 ---
 
-- ISecurityService (for users)
+- ISecurityService
 
 ## SonarCloud
 
