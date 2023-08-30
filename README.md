@@ -161,7 +161,7 @@ Finally, consisting of the most "deep" part of our API, we have the so-called **
 
 Such entities are:
 - Artists
-- Musical genres)
+- Genres (musical)
 - Productions
 - Tracks
 - Users
