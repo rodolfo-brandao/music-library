@@ -120,9 +120,9 @@ The detailed list of all packages used in this project can be accessed [here](do
 
 <img src="assets/api-architecture.png" alt="API Architecture" witdh="500" />
 
-## How does it work?
+### How does it work?
 
-### Commands & Queries
+#### Commands & Queries
 
 When it comes to the exposed layer of our application, which is called **Presentation**, the first thing we notice in this architecture is the fact that all HTTP requests are segregated into 2 categories:
 - Commands
@@ -134,7 +134,7 @@ Where,
 
 Bearing in mind that both actions can occur both in the SQLite and Redis database.
 
-### Handlers & Validators
+#### Handlers & Validators
 
 Moving on to the second component of our architecture, which communicates directly with the *Presentation* layer, we have a layer called **Application**.
 
@@ -144,7 +144,7 @@ In cases where these validations fail, generally speaking, the API will return r
 
 For successful cases, the API will return responses containing the appropriate HTTP status code, within the range 200–299, which may also have the JSON object of the respective resource.
 
-### Repositories, Unit of Work & Services
+#### Repositories, Unit of Work & Services
 
 From this moment on, we will be talking about the layer responsible for data communication and management, being directly connected to SQLite and Redis databases. This layer is simply named **Data**.
 
@@ -155,7 +155,7 @@ In practical terms, we will find here the concrete implementations of the compon
 
 These are used within the handlers contained in the *Application* layer to enable business rules, thus resulting in a dependency on this layer.
 
-### Models & Contracts
+#### Models & Contracts
 
 Finally, consisting of the most "deep" part of our API, we have the so-called **Core** layer. Where here we define our domain from the entities conceived through the need of the project.
 
