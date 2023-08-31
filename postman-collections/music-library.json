@@ -98,6 +98,28 @@
 						"url": "{{localhost}}/api/genres/v1"
 					},
 					"response": []
+				},
+				{
+					"name": "api/genres/v1/{id}",
+					"id": "3f039da5-fe64-475f-9b28-c3923d84b505",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"temp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{localhost}}/api/genres/v1"
+					},
+					"response": []
 				}
 			],
 			"id": "8b292582-dec5-43cc-aed0-0d7e77e57891"
@@ -197,13 +219,13 @@
 	],
 	"variable": [
 		{
-			"id": "db44bf69-99a6-4dc0-b8b2-d6e1b7334225",
+			"id": "cd4a22e8-81c2-424d-a83c-be0a00a84754",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "4243d13b-9f56-4f56-99c0-c0612c7c624d",
+			"id": "67ab50c0-0a70-4221-ac18-03aed402eed5",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
