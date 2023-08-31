@@ -106,18 +106,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"temp\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{localhost}}/api/genres/v1"
+						"url": "{{localhost}}/api/genres/v1/d508a755-70f6-4bb5-a1ea-cd33152e42d4"
 					},
 					"response": []
 				}
@@ -219,13 +210,13 @@
 	],
 	"variable": [
 		{
-			"id": "987a7225-d43b-4f71-b8a6-f1c11b3042c8",
+			"id": "c80303cf-cc49-4b56-bfc4-c781fb9f6523",
 			"key": "localhost",
 			"value": "https://localhost:7233",
 			"type": "string"
 		},
 		{
-			"id": "1dc2d69b-addd-4801-aa37-e91e609608e9",
+			"id": "8d9a344e-e6e0-47e6-9e0a-73e1c76f2c4d",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
