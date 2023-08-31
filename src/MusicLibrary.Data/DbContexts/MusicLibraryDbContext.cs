@@ -9,6 +9,13 @@ namespace MusicLibrary.Data.DbContexts;
 [ExcludeFromCodeCoverage]
 public sealed class MusicLibraryDbContext : DbContext
 {
+    /// <summary>
+    /// Public constructor for the sole purpose of mocking tests.
+    /// </summary>
+    public MusicLibraryDbContext()
+    {
+    }
+
     public MusicLibraryDbContext(DbContextOptions<MusicLibraryDbContext> options) : base(options)
     {
         ChangeTracker.LazyLoadingEnabled = default;
